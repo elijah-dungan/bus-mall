@@ -7,13 +7,11 @@
 
 var allImgs = [];
 var recentRandNum = [];
-var lastRecentRandNum = [];
 
-var remainingVotes = 10;
-var temp = 0;
-var bestProduct;
+var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
+var ulEl = document.getElementById('vote-list');
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
 var imgThreeEl = document.getElementById('image-three');
@@ -63,7 +61,7 @@ function assignValues(elName) { // assignes random src, alt, and title values to
     var randNum = random(0, allImgs.length - 1); // generates another number if number already exists
   }
   if(recentRandNum.length > 5) { // condition that checks how many numbers are in recentRandInd array
-    recentRandNum.shift(); // removes numbers from the beginning of the array when more than the specified number, allows array to by dynamic
+    recentRandNum.shift(); // removes numbers from the beginning of the array when there are more than the specified number, allows array to by dynamic
   }
   recentRandNum.push(randNum); // pushes random number into recentRandNum array
   allImgs[randNum].views ++; // increments views by 1
@@ -77,19 +75,18 @@ function render() {
   assignValues(imgTwoEl);
   assignValues(imgThreeEl);
   console.log(recentRandNum);
-  console.log(lastRecentRandNum);
 }
 
 function renderVotes() {
   for(var i = 0; i < allImgs.length; i ++) {
-    if(allImgs[i] > temp) {
-      temp = allImgs[i].votes;
-      bestProduct = allImgs[i];
-    }
+    var name = allImgs[i].name;
+    var votes = allImgs[i].votes;
+    // var views = allImgs[i].views;
+    // var percentage = votes / views * 100;
+    var newList = document.createElement('li');
+    newList.textContent = `${votes} votes for the ${name}.`;
+    ulEl.appendChild(newList);
   }
-  var h2El = document.createElement('h2');
-  h2El.textContent = `Highest voted product is ${bestProduct.name} with ${bestProduct.votes} votes.`;
-  imgContainerEl.appendChild(h2El);
 }
 
 /* --Event Handler-- */
@@ -99,17 +96,19 @@ function clickHandler(event) {
   if(event.target.id === 'image-container') { // checks if user clicked on a product
     alert('please click on a product'); // instructs user to click on a product
   }
-  if(remainingVotes === 0) { // checks remaining votes
+  if(remainingVotes === 0) { // checks remaining votes BROKEN!!!!!!!
     imgContainerEl.removeEventListener('click', clickHandler); // removes event listener when votes = 0
     renderVotes();
   }
   for(var i = 0; i < allImgs.length; i ++) {
     if(imgName === allImgs[i].name); { //searches for matching name in allImgs array
-      allImgs[i].votes ++; // increments votes by 1
-      remainingVotes --;
+      allImgs[i].votes ++; // BROKEN!!!!!!!!
+      remainingVotes --; // BROKEN!!!!!!!!
+      console.log(remainingVotes);
     }
   }
   render();
+  console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
   console.log(event.target);
   console.log(event.target.title);
 }
@@ -121,4 +120,4 @@ imgContainerEl.addEventListener('click', clickHandler);
 /* --Function Calls-- */
 
 render();
-console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
+
