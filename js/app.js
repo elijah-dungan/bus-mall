@@ -1,8 +1,5 @@
 'use strict';
 
-
-// Upon receiving a click, three new non-duplicating random images need to be automatically displayed. In other words, the three images that are displayed should contain no duplicates, nor should they duplicate with any images that we displayed immediately before.
-
 /* --Global Variables-- */
 
 var allImgs = [];
@@ -91,26 +88,29 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
-function clickHandler(event) {
-  var imgName = event.target.title; // stores title of img clicked on
-  if(event.target.id === 'image-container') { // checks if user clicked on a product
+function clickHandler(e) {
+  if(e.target.id === 'image-container') { // checks if user clicked on a product
     alert('please click on a product'); // instructs user to click on a product
   }
-  if(remainingVotes === 0) { // checks remaining votes BROKEN!!!!!!!
+  if(remainingVotes === 1) { // checks remaining votes
     imgContainerEl.removeEventListener('click', clickHandler); // removes event listener when votes = 0
     renderVotes();
   }
   for(var i = 0; i < allImgs.length; i ++) {
-    if(imgName === allImgs[i].name); { //searches for matching name in allImgs array
-      allImgs[i].votes ++; // BROKEN!!!!!!!!
-      remainingVotes --; // BROKEN!!!!!!!!
+    var imgName = e.target.title; // stores title of img clicked on
+    if(imgName === allImgs[i].name) { //searches for matching name in allImgs array
+      allImgs[i].votes ++;
+      remainingVotes --;
+      console.log('MATCH!');
+      console.log(imgName);
+      console.log(allImgs[i].name);
       console.log(remainingVotes);
     }
   }
-  render();
   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
-  console.log(event.target);
-  console.log(event.target.title);
+  console.log(e.target);
+  console.log(e.target.title);
+  render();
 }
 
 /* --Event Listeners-- */

@@ -3,17 +3,24 @@
     flex-direction: row;
     justify-content: center;
     border-radius: 25px;
-    border: 2px solid black;
+    border: 3px solid gray;
     padding: 10px;
     background-color: rgb(79, 81, 187);
 }
 .product-container {
+    background-color: white;
     margin: 10px 10px;
-    border: 2px solid black;
 }
 .product-container img {
+    border: 3px solid gray;
     margin: 0 0 -5px 0;
     width: 350px;
     height: 350px; 
     object-fit: cover;
+    transition: 500ms;
+}
+.product-container img:hover {
+    border: 3px solid white;
+    opacity: 0.8;
+    transition: 500ms; 
 }
