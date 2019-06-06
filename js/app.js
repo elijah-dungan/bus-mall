@@ -5,18 +5,22 @@
 /* --Global Variables-- */
 
 var allImgs = [];
-var imgContainerEl = document.getElementById('image-container');
-var imgOneEl = document.getElementsByTagName('img')[0];
-var imgTwoEl = document.getElementsByTagName('img')[1];
-var imgThreeEl = document.getElementsByTagName('img')[2];
+var recentRandNum = [];
 
-/* Constructor Functions */
+var imgContainerEl = document.getElementById('image-container');
+var imgOneEl = document.getElementById('image-one');
+var imgTwoEl = document.getElementById('image-two');
+var imgThreeEl = document.getElementById('image-three');
+
+/* --Constructor Functions-- */
 
 function Img(name) {
   this.name = name;
-  this.filepath = `img/${name}.jpg` || `img/${name}.png` || `img/${name}.gif`;
+  this.filepath = `img/${name}.jpg`;
   allImgs.push(this);
 }
+
+/* --Instances-- */
 
 new Img('bag');
 new Img('banana');
@@ -41,33 +45,39 @@ new Img('wine-glass');
 
 /* Helper Functions */
 
-function render() {
-  var randInd = random(0, allImgs.length - 1);
-  imgOneEl.src = allImgs[randInd].filepath;
-  imgOneEl.alt = allImgs[randInd].name;
-  imgOneEl.title = allImgs[randInd].name;
-
-  var randInd = random(0, allImgs.length - 1);
-  imgTwoEl.src = allImgs[randInd].filepath;
-  imgTwoEl.alt = allImgs[randInd].name;
-  imgTwoEl.title = allImgs[randInd].name;
-
-  var randInd = random(0, allImgs.length - 1);
-  imgThreeEl.src = allImgs[randInd].filepath;
-  imgThreeEl.alt = allImgs[randInd].name;
-  imgThreeEl.title = allImgs[randInd].name;
-  
-}
-
-function random(min, max) {
+function random(min, max) { // generates random numbers within a min/max range
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-/* --Instances-- */
+function assignValues(elName) { // assignes random src, alt, and title values to specified element name
+  var randNum = random(0, allImgs.length - 1); // generates a random number between zero and the length of allImgs array
+  while(recentRandNum.includes(randNum)) { // loop checks to see if random number is already in array and generates another index
+    var randNum = random(0, allImgs.length - 1);
+  }
+  if(recentRandNum > 3) { // condition that checks how many numbers are in recentRandInd array and removes one number from the beginning of the array when more than 3
+    recentRandNum.shift();
+  }
+  recentRandNum.push(randNum); // pushes random number into recentRandInd array
+  elName.src = allImgs[randNum].filepath;
+  elName.alt = allImgs[randNum].name;
+  elName.title = allImgs[randNum].name;
+}
 
+function render() {
+  assignValues(imgOneEl);
+  assignValues(imgTwoEl);
+  assignValues(imgThreeEl);
+}
+
+/* --Event Handler-- */
+
+function clickHandler() {
+  render();
+}
 
 /* --Event Listeners-- */
 
+imgContainerEl.addEventListener('click', clickHandler);
 
 /* --Function Calls-- */
 
