@@ -1,94 +1,73 @@
 'use strict';
 
+// Upon receiving a click, three new non-duplicating random images need to be automatically displayed. In other words, the three images that are displayed should contain no duplicates, nor should they duplicate with any images that we displayed immediately before.
+
 /* --Global Variables-- */
-var imgContainerEl = document.getElementById('');
-var imgEl = document.getElementById('');
+
 var allImgs = [];
-var recentRandomNumbers = [];
-var votesRemaining = 10;
-var resultsEl = document.getElementById('');
+var imgContainerEl = document.getElementById('image-container');
+var imgOneEl = document.getElementsByTagName('img')[0];
+var imgTwoEl = document.getElementsByTagName('img')[1];
+var imgThreeEl = document.getElementsByTagName('img')[2];
 
 /* Constructor Functions */
 
 function Img(name) {
   this.name = name;
-  this.filepath = `img/${name}.jpg`;
-  this.votes = 0;
-  this.views = 0;
+  this.filepath = `img/${name}.jpg` || `img/${name}.png` || `img/${name}.gif`;
   allImgs.push(this);
 }
+
+new Img('bag');
+new Img('banana');
+new Img('bathroom');
+new Img('boots');
+new Img('breakfast');
+new Img('bubblegum');
+new Img('chair');
+new Img('cthulhu');
+new Img('dog-duck');
+new Img('dragon');
+new Img('pen');
+new Img('pet-sweep');
+new Img('scissors');
+new Img('shark');
+new Img('sweep');
+new Img('tauntaun');
+new Img('unicorn');
+new Img('usb');
+new Img('water-can');
+new Img('wine-glass');
 
 /* Helper Functions */
 
 function render() {
-  var randomIndex = randomIndex(0, allImgs.length-1);
+  var randInd = random(0, allImgs.length - 1);
+  imgOneEl.src = allImgs[randInd].filepath;
+  imgOneEl.alt = allImgs[randInd].name;
+  imgOneEl.title = allImgs[randInd].name;
 
-  while(recentRandomNumbers.includes(randomIndex)) {
-    randomIndex = random(0, allImgs.length-1);
-  }
+  var randInd = random(0, allImgs.length - 1);
+  imgTwoEl.src = allImgs[randInd].filepath;
+  imgTwoEl.alt = allImgs[randInd].name;
+  imgTwoEl.title = allImgs[randInd].name;
 
-  recentRandomNumbers.push(randomIndex);
-
-  allImgs[randomIndex].views++;
-
-  if(recentRandomNumbers.length > 3) {
-    recentRandomNumbers.shift();
-  }
-
-  allImgs[randomIndex].views++;
-
-  imgEl.src = allImgs[randomIndex].filepath;
-  imgEl.alt = allImgs[randomIndex].name;
-  imgEl.title = allImgs[randomIndex].name;
+  var randInd = random(0, allImgs.length - 1);
+  imgThreeEl.src = allImgs[randInd].filepath;
+  imgThreeEl.alt = allImgs[randInd].name;
+  imgThreeEl.title = allImgs[randInd].name;
+  
 }
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function renderBestImg() {
-  var h2El = document.createElement('h2');
-  h2El.textContent = `The Best Img is ${bestImg.name} with ${bestImg.votes} votes.`;
-  var bestImg = 0;
-  // missing code related to parent element and append child to parent
-
-  for(var i = 0; i < allImgs.length; i++) {
-    var temp = 0;
-    if (allImgs[i].votes > temp) {
-      temp = allImgs[i].votes;
-      bestImg = allImgs[i];
-    }
-  }
-
-}
-
 /* --Instances-- */
 
-new Img('imageOne');
 
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', handleClick);
-
-function handleClick(event) {
-  var imgName = event.target.title;
-
-  if(event.target.id === 'img-container') {
-    alert('click an image!');
-  }
-  if(votesRemaining === 0) {
-    imgContainerEl.removeEventListener('click');
-    renderBestImg();
-
-  }
-  for(var i = 0; i < allImgs.length; i++) {
-    if(imgName === allImgs[i].name) {
-      allImgs[i].votes++;
-      votesRemaining--;
-    }
-    render();
-  }
-}
 
 /* --Function Calls-- */
 

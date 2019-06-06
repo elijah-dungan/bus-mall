@@ -1,0 +1,18 @@
+.img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: rgb(79, 81, 187);
+}
+.product-container {
+    margin: 10px 10px;
+    border: 2px solid black;
+}
+.product-container img {
+    margin: 0 0 -5px 0;
+    width: 350px;
+    height: 350px; 
+    object-fit: cover;
+}
