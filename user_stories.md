@@ -10,3 +10,4 @@
 
 #As a participant, I want to have an easy-to-use interface so that the selection process is quick and easy.
 #As a participant, I want to see clear images of the products with standardized height/weight ratios so that I can make quick and easy decisions.
+#As a participant, I want to know how many votes I have left, so that I know how long this task will take me.

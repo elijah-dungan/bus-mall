@@ -9,6 +9,7 @@ var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
 var ulEl = document.getElementById('vote-list');
+var h2El = document.getElementById('votes-left');
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
 var imgThreeEl = document.getElementById('image-three');
@@ -57,7 +58,7 @@ function assignValues(elName) { // assignes random src, alt, and title values to
   while(recentRandNum.includes(randNum)) { // loop checks to see if random number is already in array
     var randNum = random(0, allImgs.length - 1); // generates another number if number already exists
   }
-  if(recentRandNum.length > 5) { // condition that checks how many numbers are in recentRandInd array
+  if(recentRandNum.length > 5) { // condition that checks how many numbers are in recentRandInd array --IMPORTANT--
     recentRandNum.shift(); // removes numbers from the beginning of the array when there are more than the specified number, allows array to by dynamic
   }
   recentRandNum.push(randNum); // pushes random number into recentRandNum array
@@ -71,7 +72,7 @@ function render() {
   assignValues(imgOneEl);
   assignValues(imgTwoEl);
   assignValues(imgThreeEl);
-  console.log(recentRandNum);
+  console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
 }
 
 function renderVotes() {
@@ -81,7 +82,7 @@ function renderVotes() {
     // var views = allImgs[i].views;
     // var percentage = votes / views * 100;
     var newList = document.createElement('li');
-    newList.textContent = `${votes} votes for the ${name}.`;
+    newList.textContent = `${votes} votes for the ${name}`;
     ulEl.appendChild(newList);
   }
 }
@@ -101,15 +102,10 @@ function clickHandler(e) {
     if(imgName === allImgs[i].name) { //searches for matching name in allImgs array
       allImgs[i].votes ++;
       remainingVotes --;
-      console.log('MATCH!');
-      console.log(imgName);
-      console.log(allImgs[i].name);
-      console.log(remainingVotes);
+      h2El.textContent = `Votes Remaining: ${remainingVotes}`;
     }
   }
   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
-  console.log(e.target);
-  console.log(e.target.title);
   render();
 }
 
@@ -120,4 +116,5 @@ imgContainerEl.addEventListener('click', clickHandler);
 /* --Function Calls-- */
 
 render();
+console.log(allImgs);
 
