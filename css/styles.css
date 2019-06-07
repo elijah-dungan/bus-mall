@@ -80,16 +80,16 @@ fieldset {
     text-align: center;
 }
 #submit {
-    width: 600px;
-    height: 40px;
+    width: 400px;
+    height: 60px;
     border: none;
-    border-radius: 10px;
     background-color: rgb(253, 35, 0);
     font-size: 1.5em;
     color: white;
     transition: 500ms;
 }
 #submit:hover {
+    /* width: 900px; */
     background-color: white;
     color: black;
     transition: 500ms;
