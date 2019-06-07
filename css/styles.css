@@ -37,7 +37,7 @@ fieldset {
     margin: 0 0 -5px 0;
     width: 275px;
     height: 200px; 
-    border: 4px solid white;
+    border: 5px solid white;
     object-fit: cover;
     transition: 500ms;
     box-shadow: 
@@ -53,9 +53,9 @@ fieldset {
     opacity: 0.8;
     box-shadow: 0 6px 4px rgb(0, 0, 0, 0.15);
 } */
-.image-container {
+/* .image-container {
     background-color: white;
-}
+} */
 /* #product-container-one { --resembles wireframe--
     border-color: black;
     border-style: solid;
@@ -92,7 +92,7 @@ fieldset {
     font-size: 1.5em;
     color: white;
     box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.35);
+    0 6px 4px rgb(0, 0, 0, 0.40);
     transition: 500ms;
 }
 #submit:hover {
@@ -100,7 +100,7 @@ fieldset {
     background-color: white;
     color: black;
     box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.20);
+    0 6px 4px rgb(0, 0, 0, 0.23);
     transition: 500ms;
 }
 #vote-list {
