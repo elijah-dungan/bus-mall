@@ -19,11 +19,16 @@ var radioOneEl = document.getElementById('radio-vote-one');
 var radioTwoEl = document.getElementById('radio-vote-two');
 var radioThreeEl = document.getElementById('radio-vote-three');
 
+var labelOneEl = document.getElementById('label-one');
+var labelTwoEl = document.getElementById('label-two');
+var labelThreeEl = document.getElementById('label-three');
+
 /* --Constructor Functions-- */
 
 function Img(name, extension) {
-  this.name = name;
-  this.value = name;
+  this.name = name.toLowerCase();
+  this.value = name.toLowerCase();
+  this.displayName = name;
   this.filepath = `img/${name}.${extension}`;
   this.votes = 0;
   this.views = 0;
@@ -32,26 +37,26 @@ function Img(name, extension) {
 
 /* --Instances-- */
 
-new Img('bag', 'jpg');
-new Img('banana', 'jpg');
-new Img('bathroom', 'jpg');
-new Img('boots', 'jpg');
-new Img('breakfast', 'jpg');
-new Img('bubblegum', 'jpg');
-new Img('chair', 'jpg');
-new Img('cthulhu', 'jpg');
-new Img('dog-duck'), 'jpg';
-new Img('dragon', 'jpg');
-new Img('pen', 'jpg');
-new Img('pet-sweep', 'jpg');
-new Img('scissors', 'jpg');
-new Img('shark', 'jpg');
-new Img('sweep', 'png');
-new Img('tauntaun', 'jpg');
-new Img('unicorn', 'jpg');
-new Img('usb', 'gif');
-new Img('water-can', 'jpg');
-new Img('wine-glass', 'jpg');
+new Img('Bag', 'jpg');
+new Img('Banana', 'jpg');
+new Img('Bathroom', 'jpg');
+new Img('Boots', 'jpg');
+new Img('Breakfast', 'jpg');
+new Img('Bubblegum', 'jpg');
+new Img('Chair', 'jpg');
+new Img('Cthulhu', 'jpg');
+new Img('Dog-Duck', 'jpg');
+new Img('Dragon', 'jpg');
+new Img('Pen', 'jpg');
+new Img('Pet-Sweep', 'jpg');
+new Img('Scissors', 'jpg');
+new Img('Shark', 'jpg');
+new Img('Sweep', 'png');
+new Img('Tauntaun', 'jpg');
+new Img('Unicorn', 'jpg');
+new Img('USB', 'gif');
+new Img('Water-Can', 'jpg');
+new Img('Wine-Glass', 'jpg');
 
 /* Helper Functions */
 
@@ -59,7 +64,7 @@ function random(min, max) { // generates random numbers within a min/max range
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function assignValues(imgElName, radioElName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
+function assignValues(imgElName, radioElName, labelName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
   var randNum = random(0, allImgs.length - 1); // generates a random number between zero and the length of allImgs array
   while(recentRandNum.includes(randNum)) { // loop checks to see if random number is already in array
     var randNum = random(0, allImgs.length - 1); // generates another number if number already exists
@@ -73,23 +78,24 @@ function assignValues(imgElName, radioElName) { // assignes random src, alt, tit
   imgElName.alt = allImgs[randNum].name; // assigns name value to element's alt property
   imgElName.title = allImgs[randNum].name; // assigns name value to element's title property
   radioElName.value = allImgs[randNum].name; // assigns name value to element's value property
+  labelName.innerText = allImgs[randNum].displayName; // changes element's textContent to name
 }
 
 function render() { // renders images and radio buttons while assigning their appropriate property values
-  assignValues(imgOneEl, radioOneEl); // assigns property values to first image and radio button
-  assignValues(imgTwoEl, radioTwoEl); // assigns property values to first image and radio button
-  assignValues(imgThreeEl, radioThreeEl); // assigns property values to first image and radio button
+  assignValues(imgOneEl, radioOneEl, labelOneEl); // assigns property values to first image and radio button
+  assignValues(imgTwoEl, radioTwoEl, labelTwoEl); // assigns property values to first image and radio button
+  assignValues(imgThreeEl, radioThreeEl, labelThreeEl); // assigns property values to first image and radio button
   console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
 }
 
 function renderVotes() {
   for(var i = 0; i < allImgs.length; i ++) {
-    var name = allImgs[i].name;
+    var displayName = allImgs[i].displayName;
     var votes = allImgs[i].votes;
     // var views = allImgs[i].views;
     // var percentage = votes / views * 100;
     var newList = document.createElement('li');
-    newList.textContent = `${votes} votes for the ${name}`;
+    newList.textContent = `${votes} votes for the ${displayName}`;
     ulEl.appendChild(newList);
   }
 }
