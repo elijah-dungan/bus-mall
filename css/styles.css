@@ -61,15 +61,15 @@ fieldset {
     background-color: red;
     font-size: 1.5em;
     color: white;
-    box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.40);
+    /* box-shadow: 
+    0 6px 4px rgb(0, 0, 0, 0.40); */
     transition: 500ms;
 }
 #submit:hover {
     background-color: white;
     color: black;
-    box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.23);
+    /* box-shadow: 
+    0 6px 4px rgb(0, 0, 0, 0.23); */
     transition: 500ms;
 }
 #vote-list {
