@@ -47,7 +47,7 @@ fieldset {
     padding: 10px;
 }
 .product-container img {
-    margin: 0 0 -5px 0;
+    margin: 0 0 -10px 0;
     width: 275px;
     height: 200px; 
     border: 5px solid white;
@@ -57,7 +57,7 @@ fieldset {
     0 6px 4px rgb(0, 0, 0, 0.40);
 }
 .radio-container {
-    padding: 10px 0 10px 0;
+    padding: 15px 0 10px 0;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
