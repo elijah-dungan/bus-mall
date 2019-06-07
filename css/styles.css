@@ -149,6 +149,7 @@ fieldset {
     width: 400px;
     height: 60px;
     border: none;
+    border-radius: 10px;
     background-color: rgb(253, 35, 0);
     font-size: 1.5em;
     color: white;
