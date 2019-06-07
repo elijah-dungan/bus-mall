@@ -88,6 +88,12 @@ function render() { // renders images and radio buttons while assigning their ap
   console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
 }
 
+function defaultStyle() {
+  imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
+  imgOneEl.style.opacity = '0.8';
+  imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+}
+
 function renderVotes() {
   for(var i = 0; i < allImgs.length; i ++) {
     var displayName = allImgs[i].displayName;
@@ -102,12 +108,47 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
+function changeHandler(e) {
+  if (e.target) {
+    var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
+    for(var j = 0; j < options.length; j ++) {
+      if(options[0].checked) {
+        imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
+        imgOneEl.style.opacity = '0.8';
+        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+      } else {
+        imgOneEl.style.borderColor = 'gray';
+        imgOneEl.style.opacity = '1';
+        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+      }
+      if(options[1].checked) {
+        imgTwoEl.style.borderColor = 'rgb(255, 255, 255)';
+        imgTwoEl.style.opacity = '0.8';
+        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+      } else {
+        imgTwoEl.style.borderColor = 'gray';
+        imgTwoEl.style.opacity = '1';
+        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+      }
+      if(options[2].checked) {
+        imgThreeEl.style.borderColor = 'rgb(255, 255, 255)';
+        imgThreeEl.style.opacity = '0.8';
+        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+      } else {
+        imgThreeEl.style.borderColor = 'gray';
+        imgThreeEl.style.opacity = '1';
+        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+      }
+    }
+  }
+}
+
 function submitHandler(e) {
   if(e.target) {
     e.preventDefault();
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var i = 0; i < allImgs.length; i ++) { // loops through all images
-      for(var j = [0]; j < options.length; j++) { // loops through radio buttons
+      for(var j = [0]; j < options.length; j ++) { // loops through radio buttons
         if(options[j].checked) { // checks which radio button has been selected
           if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image namge
             allImgs[i].votes ++; // adds vote to constructor function property
@@ -131,9 +172,11 @@ function submitHandler(e) {
 
 /* --Event Listeners-- */
 
+imgContainerEl.addEventListener('click', changeHandler);
 imgContainerEl.addEventListener('submit', submitHandler);
 
 /* --Function Calls-- */
 
 render();
+defaultStyle();
 console.log(allImgs);

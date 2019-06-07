@@ -30,7 +30,6 @@ fieldset {
     justify-content: center;
 }
 .product-container {
-    background-color: white;
     background-color: rgb(79, 81, 187); 
     margin: 10px 0;
     padding: 15px 15px 0 15px;
@@ -42,6 +41,11 @@ fieldset {
     border: 3px solid gray;
     object-fit: cover;
     transition: 500ms;
+    box-shadow: 
+    0 6px 4px rgb(0, 0, 0, 0.30);
+}
+.image-container {
+    background-color: white;
 }
 /* #product-container-one { --resembles wireframe--
     border-color: black;
@@ -78,12 +82,16 @@ fieldset {
     background-color: red;
     font-size: 1.5em;
     color: white;
+    box-shadow: 
+    0 6px 4px rgb(0, 0, 0, 0.30);
     transition: 500ms;
 }
 #submit:hover {
     /* border: 2px solid black; --resembles wireframe-- */
     background-color: white;
     color: black;
+    box-shadow: 
+    0 6px 4px rgb(0, 0, 0, 0.15);
     transition: 500ms;
 }
 #vote-list {
