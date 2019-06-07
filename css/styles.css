@@ -44,6 +44,16 @@ fieldset {
     box-shadow: 
     0 6px 4px rgb(0, 0, 0, 0.30);
 }
+/* .img-default { --for refactoring js code--
+    border-color: gray;
+    opacity: 1;
+    box-shadow: 0 6px 4px rgb(0, 0, 0, 0.30);
+}
+.img-select { --for refactoring js code--
+    border-color: white;
+    opacity: 0.8;
+    box-shadow: 0 6px 4px rgb(0, 0, 0, 0.15);
+} */
 .image-container {
     background-color: white;
 }
