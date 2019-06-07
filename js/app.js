@@ -94,11 +94,11 @@ function render() { // renders images and radio buttons while assigning their ap
 function defaultStyle() {
   imgOneEl.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
   imgOneEl.style.margin = '-10px 0 0 0';
-  imgOneEl.style.filter = 'brightness(110%)';
-  imgTwoEl.style.filter = 'brightness(100%)';
+  imgOneEl.style.filter = 'brightness(105%)';
+  imgTwoEl.style.filter = 'brightness(95%)';
   imgTwoEl.style.margin = '0 0 -10px 0';
   imgThreeEl.style.margin = '0 0 -10px 0';
-  imgThreeEl.style.filter = 'brightness(100%)';
+  imgThreeEl.style.filter = 'brightness(95%)';
 }
 
 function renderVotes() {
@@ -121,29 +121,29 @@ function changeHandler(e) {
     for(var j = 0; j < options.length; j ++) {
       if(options[0].checked) {
         imgOneEl.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
-        imgOneEl.style.filter = 'brightness(110%)';
+        imgOneEl.style.filter = 'brightness(105%)';
         imgOneEl.style.margin = '-10px 0 0 0';
       } else {
         imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
         imgOneEl.style.margin = '0 0 -10px 0';
-        imgOneEl.style.filter = 'brightness(100%)';
+        imgOneEl.style.filter = 'brightness(95%)';
       }
       if(options[1].checked) {
         imgTwoEl.style.boxShadow = '0 17px 5px rgb(0, 0, 0, 0.23)';
-        imgTwoEl.style.filter = 'brightness(110%)';
+        imgTwoEl.style.filter = 'brightness(105%)';
         imgTwoEl.style.margin = '-10px 0 0 0';
       } else {
         imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
-        imgTwoEl.style.filter = 'brightness(100%)';
+        imgTwoEl.style.filter = 'brightness(95%)';
         imgTwoEl.style.margin = '0 0 -10px 0';
       }
       if(options[2].checked) {
         imgThreeEl.style.boxShadow = '2px 17px 5px rgb(0, 0, 0, 0.23)';
-        imgThreeEl.style.filter = 'brightness(110%)';
+        imgThreeEl.style.filter = 'brightness(105%)';
         imgThreeEl.style.margin = '-10px 0 0 0';
       } else {
         imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
-        imgThreeEl.style.filter = 'brightness(100%)';
+        imgThreeEl.style.filter = 'brightness(95%)';
         imgThreeEl.style.margin = '0 0 -10px 0';
       }
     }
