@@ -165,10 +165,10 @@ function submitHandler(e) {
         }
       }
     }
-  }
-  if(remainingVotes === 0) { // checks remaining votes
-    imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
-    renderVotes();
+    if(remainingVotes === 0) { // checks remaining votes
+      imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
+      renderVotes();
+    }
   }
   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
   console.log(e.target);
