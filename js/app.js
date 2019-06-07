@@ -21,10 +21,10 @@ var radioThreeEl = document.getElementById('radio-vote-three');
 
 /* --Constructor Functions-- */
 
-function Img(name) {
+function Img(name, extension) {
   this.name = name;
   this.value = name;
-  this.filepath = `img/${name}.jpg`;
+  this.filepath = `img/${name}.${extension}`;
   this.votes = 0;
   this.views = 0;
   allImgs.push(this);
@@ -32,26 +32,26 @@ function Img(name) {
 
 /* --Instances-- */
 
-new Img('bag');
-new Img('banana');
-new Img('bathroom');
-new Img('boots');
-new Img('breakfast');
-new Img('bubblegum');
-new Img('chair');
-new Img('cthulhu');
-new Img('dog-duck');
-new Img('dragon');
-new Img('pen');
-new Img('pet-sweep');
-new Img('scissors');
-new Img('shark');
-new Img('sweep');
-new Img('tauntaun');
-new Img('unicorn');
-new Img('usb');
-new Img('water-can');
-new Img('wine-glass');
+new Img('bag', 'jpg');
+new Img('banana', 'jpg');
+new Img('bathroom', 'jpg');
+new Img('boots', 'jpg');
+new Img('breakfast', 'jpg');
+new Img('bubblegum', 'jpg');
+new Img('chair', 'jpg');
+new Img('cthulhu', 'jpg');
+new Img('dog-duck'), 'jpg';
+new Img('dragon', 'jpg');
+new Img('pen', 'jpg');
+new Img('pet-sweep', 'jpg');
+new Img('scissors', 'jpg');
+new Img('shark', 'jpg');
+new Img('sweep', 'png');
+new Img('tauntaun', 'jpg');
+new Img('unicorn', 'jpg');
+new Img('usb', 'gif');
+new Img('water-can', 'jpg');
+new Img('wine-glass', 'jpg');
 
 /* Helper Functions */
 
@@ -59,7 +59,7 @@ function random(min, max) { // generates random numbers within a min/max range
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function assignValues(imgElName, radioElName) { // assignes random src, alt, and title values to specified elements in the DOM
+function assignValues(imgElName, radioElName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
   var randNum = random(0, allImgs.length - 1); // generates a random number between zero and the length of allImgs array
   while(recentRandNum.includes(randNum)) { // loop checks to see if random number is already in array
     var randNum = random(0, allImgs.length - 1); // generates another number if number already exists
@@ -69,16 +69,16 @@ function assignValues(imgElName, radioElName) { // assignes random src, alt, and
   }
   recentRandNum.push(randNum); // pushes random number into recentRandNum array
   allImgs[randNum].views ++; // increments views by 1
-  imgElName.src = allImgs[randNum].filepath;
-  imgElName.alt = allImgs[randNum].name;
-  imgElName.title = allImgs[randNum].name;
-  radioElName.value = allImgs[randNum].name;
+  imgElName.src = allImgs[randNum].filepath; // assigns filepath value to element's src property
+  imgElName.alt = allImgs[randNum].name; // assigns name value to element's alt property
+  imgElName.title = allImgs[randNum].name; // assigns name value to element's title property
+  radioElName.value = allImgs[randNum].name; // assigns name value to element's value property
 }
 
-function render() {
-  assignValues(imgOneEl, radioOneEl);
-  assignValues(imgTwoEl, radioTwoEl);
-  assignValues(imgThreeEl, radioThreeEl);
+function render() { // renders images and radio buttons while assigning their appropriate property values
+  assignValues(imgOneEl, radioOneEl); // assigns property values to first image and radio button
+  assignValues(imgTwoEl, radioTwoEl); // assigns property values to first image and radio button
+  assignValues(imgThreeEl, radioThreeEl); // assigns property values to first image and radio button
   console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
 }
 
@@ -96,63 +96,35 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
-// function clickHandler(e) {
-//   if(e.target.id === 'image-container') { // checks if user clicked on a product
-//     alert('please click on a product'); // instructs user to click on a product
-//   }
-//   if(remainingVotes === 1) { // checks remaining votes
-//     imgContainerEl.removeEventListener('click', clickHandler); // removes event listener when votes = 0
-//     renderVotes();
-//   }
-//   for(var i = 0; i < allImgs.length; i ++) {
-//     var imgName = e.target.title; // stores title of img clicked on
-//     if(imgName === allImgs[i].name) { //searches for matching name in allImgs array
-//       allImgs[i].votes ++;
-//       remainingVotes --;
-//       h2El.textContent = `Votes Remaining: ${remainingVotes}`;
-//     }
-//   }
-//   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
-//   render();
-// }
-
 function submitHandler(e) {
-  // if(e.target.id === 'image-container') { // checks if user clicked on a product
-  //   alert('please click on a product'); // instructs user to click on a product
-  // }
   if(e.target) {
-    var options = imgContainerEl.elements.radioVote;
-    for(var i = 0; i < allImgs.length; i ++) {
-      for(var j = [0]; j < options.length; j++) {
-        if(options[j].value === allImgs[i].name) {
-          allImgs[i].votes ++;
-          remainingVotes --;
-          h2El.textContent = `Votes Remaining: ${remainingVotes}`;
+    e.preventDefault();
+    var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
+    for(var i = 0; i < allImgs.length; i ++) { // loops through all images
+      for(var j = [0]; j < options.length; j++) { // loops through radio buttons
+        if(options[j].checked) { // checks which radio button has been selected
+          if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image namge
+            allImgs[i].votes ++; // adds vote to constructor function property
+            remainingVotes --; // decreases votes from remaining votes array
+            h2El.textContent = `Votes Remaining: ${remainingVotes}`; // displays remaining votes in the DOM
+            console.log(options[j].value);
+            console.log(allImgs[i].name);
+          }
         }
       }
     }
   }
-  if(remainingVotes === 1) { // checks remaining votes
+  if(remainingVotes === 0) { // checks remaining votes
     imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
     renderVotes();
   }
-  // for(var i = 0; i < allImgs.length; i ++) {
-  //   var imgName = e.target.title; // stores title of img clicked on
-  //   if(imgName === allImgs[i].name) { //searches for matching name in allImgs array
-  //     allImgs[i].votes ++;
-  //     remainingVotes --;
-  //     h2El.textContent = `Votes Remaining: ${remainingVotes}`;
-  //   }
-  // }
   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
   console.log(e.target);
-  console.log(options.value);
   render();
 }
 
 /* --Event Listeners-- */
 
-// imgContainerEl.addEventListener('click', clickHandler);
 imgContainerEl.addEventListener('submit', submitHandler);
 
 /* --Function Calls-- */
