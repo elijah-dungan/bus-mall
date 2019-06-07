@@ -8,34 +8,39 @@
         <header>
         </header>
         <main>
-            <div id="image-container">
+            <form id="image-container">
+                <fieldset>
                 <h2 id="votes-left">Votes Remaining: 25</h2>
                 <div class="flexbox-container-row">
-                    <div class="product-container">
+                    <div id="product-container-one" class="product-container">
                         <img id="image-one" src="" alt="" title=""/>
-                        <div class="radio-container" class="flexbox-container-row">
-                            <label class="radio-label"><input type="radio" class="radio-vote" name="radio-vote" value="">Select</label>
+                        <div class="radio-container" >
+                            <label class="radio-label"><input type="radio" id="radio-vote-one" name="radioVote" value="">Select</label>
                         </div>
                     </div>
-                    <div class="product-container">
+                    <div id="product-container-two"class="product-container">
                         <img id="image-two" src="" alt="" title=""/>
                         <div class="radio-container">
-                            <label class="radio-label"><input type="radio" class="radio-vote" name="radio-vote" value="">Select</label>
+                            <label class="radio-label"><input type="radio" id="radio-vote-two" name="radioVote" value="">Select</label>
                         </div>
                     </div>
-                    <div class="product-container">
+                    <div id="product-container-three"class="product-container">
                         <img id="image-three" src="" alt="" title=""/>
                         <div class="radio-container">
-                            <label><input type="radio" class="radio-vote" name="radio-vote" value="">Select</label>
+                            <label><input type="radio" id="radio-vote-three" name="radioVote" value="">Select</label>
                         </div>
                     </div>
+                </div>
+                <div class="button-area">
+                    <button id="submit" name="radioVote">Vote!</button>
                 </div>
                 <h2 id="votes-left">Results:</h2>
                 <div class="flexbox-container-row">
                     <ul id="vote-list">
                     </ul>
                 </div>
-            </div>
+                </fieldset>
+            </form>
         </main>
         <script src="js/app.js" type="text/javascript"></script>
         <footer>
