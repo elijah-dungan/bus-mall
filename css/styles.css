@@ -47,6 +47,18 @@ fieldset {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.radio-vote {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+}
+.label {
+    margin: 3.75px 0 0 5px;
 }
 .button-area {
     margin: 0 auto;
