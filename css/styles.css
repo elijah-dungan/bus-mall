@@ -15,7 +15,8 @@ h2 {
     text-align: center;
 }
 #image-container {
-    background-color: rgb(79, 81, 187);
+    background-image: radial-gradient(ellipse, rgb(99, 101, 207) 25%, rgb(79, 81, 187));
+    /* background-color: rgb(79, 81, 187); */
     padding: 10px;
 }
 fieldset {
@@ -29,7 +30,6 @@ fieldset {
     justify-content: center;
 }
 .product-container {
-    background-color: rgb(79, 81, 187); 
     padding: 10px;
 }
 .product-container img {
@@ -61,15 +61,11 @@ fieldset {
     background-color: red;
     font-size: 1.5em;
     color: white;
-    /* box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.40); */
     transition: 500ms;
 }
 #submit:hover {
     background-color: white;
     color: black;
-    /* box-shadow: 
-    0 6px 4px rgb(0, 0, 0, 0.23); */
     transition: 500ms;
 }
 #vote-list {
