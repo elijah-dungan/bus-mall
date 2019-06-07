@@ -89,9 +89,10 @@ function render() { // renders images and radio buttons while assigning their ap
 }
 
 function defaultStyle() {
-  imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
-  imgOneEl.style.opacity = '0.8';
-  imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+  // imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
+  // imgOneEl.style.opacity = '0.8';
+  imgOneEl.style.boxShadow = '0 12px 5px rgb(0, 0, 0, 0.20)';
+  imgOneEl.style.margin = '-5px 0 -5px 0';
 }
 
 function renderVotes() {
@@ -113,31 +114,37 @@ function changeHandler(e) {
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var j = 0; j < options.length; j ++) {
       if(options[0].checked) {
-        imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
-        imgOneEl.style.opacity = '0.8';
-        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+        // imgOneEl.style.borderColor = 'rgb(255, 255, 255)';
+        // imgOneEl.style.opacity = '0.8';
+        imgOneEl.style.boxShadow = '0 12px 5px rgb(0, 0, 0, 0.20)';
+        imgOneEl.style.margin = '-5px 0 -5px 0';
       } else {
-        imgOneEl.style.borderColor = 'gray';
-        imgOneEl.style.opacity = '1';
-        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+        // imgOneEl.style.borderColor = 'gray';
+        // imgOneEl.style.opacity = '1';
+        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
+        imgOneEl.style.margin = '0 0 -5px 0';
       }
       if(options[1].checked) {
-        imgTwoEl.style.borderColor = 'rgb(255, 255, 255)';
-        imgTwoEl.style.opacity = '0.8';
-        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+        // imgTwoEl.style.borderColor = 'rgb(255, 255, 255)';
+        // imgTwoEl.style.opacity = '0.8';
+        imgTwoEl.style.boxShadow = '0 12px 5px rgb(0, 0, 0, 0.20)';
+        imgTwoEl.style.margin = '-5px 0 -5px 0';
       } else {
-        imgTwoEl.style.borderColor = 'gray';
-        imgTwoEl.style.opacity = '1';
-        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+        // imgTwoEl.style.borderColor = 'gray';
+        // imgTwoEl.style.opacity = '1';
+        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
+        imgTwoEl.style.margin = '0 0 -5px 0';
       }
       if(options[2].checked) {
-        imgThreeEl.style.borderColor = 'rgb(255, 255, 255)';
-        imgThreeEl.style.opacity = '0.8';
-        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.15)';
+        // imgThreeEl.style.borderColor = 'rgb(255, 255, 255)';
+        // imgThreeEl.style.opacity = '0.8';
+        imgThreeEl.style.boxShadow = '0 12px 5px rgb(0, 0, 0, 0.20)';
+        imgThreeEl.style.margin = '-5px 0 -5px 0';
       } else {
-        imgThreeEl.style.borderColor = 'gray';
-        imgThreeEl.style.opacity = '1';
-        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.30)';
+        // imgThreeEl.style.borderColor = 'gray';
+        // imgThreeEl.style.opacity = '1';
+        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
+        imgThreeEl.style.margin = '0 0 -5px 0';
       }
     }
   }
