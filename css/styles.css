@@ -15,7 +15,7 @@ h2 {
     text-align: center;
 }
 #image-container {
-    background-image: radial-gradient(ellipse, rgb(99, 101, 207) 25%, rgb(79, 81, 187));
+    background-image: radial-gradient(ellipse, rgb(119, 138, 149) 25%, rgb(79, 98, 109));
     /* background-color: rgb(79, 81, 187); */
     padding: 10px;
 }
