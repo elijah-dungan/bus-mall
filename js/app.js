@@ -89,12 +89,32 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
-function clickHandler(e) {
+// function clickHandler(e) {
+//   if(e.target.id === 'image-container') { // checks if user clicked on a product
+//     alert('please click on a product'); // instructs user to click on a product
+//   }
+//   if(remainingVotes === 1) { // checks remaining votes
+//     imgContainerEl.removeEventListener('click', clickHandler); // removes event listener when votes = 0
+//     renderVotes();
+//   }
+//   for(var i = 0; i < allImgs.length; i ++) {
+//     var imgName = e.target.title; // stores title of img clicked on
+//     if(imgName === allImgs[i].name) { //searches for matching name in allImgs array
+//       allImgs[i].votes ++;
+//       remainingVotes --;
+//       h2El.textContent = `Votes Remaining: ${remainingVotes}`;
+//     }
+//   }
+//   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
+//   render();
+// }
+
+function submitHandler(e) {
   if(e.target.id === 'image-container') { // checks if user clicked on a product
     alert('please click on a product'); // instructs user to click on a product
   }
   if(remainingVotes === 1) { // checks remaining votes
-    imgContainerEl.removeEventListener('click', clickHandler); // removes event listener when votes = 0
+    imgContainerEl.removeEventListener('click', submitHandler); // removes event listener when votes = 0
     renderVotes();
   }
   for(var i = 0; i < allImgs.length; i ++) {
@@ -111,7 +131,8 @@ function clickHandler(e) {
 
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', clickHandler);
+// imgContainerEl.addEventListener('click', clickHandler);
+imgContainerEl.addEventListener('submit', submitHandler);
 
 /* --Function Calls-- */
 
