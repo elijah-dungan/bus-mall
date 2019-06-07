@@ -16,9 +16,9 @@ var imgThreeEl = document.getElementById('image-three');
 
 /* --Constructor Functions-- */
 
-function Img(name) {
+function Img(name, extension) {
   this.name = name;
-  this.filepath = `img/${name}.jpg`;
+  this.filepath = `img/${name}.${extension}`;
   this.votes = 0;
   this.views = 0;
   allImgs.push(this);
@@ -26,26 +26,26 @@ function Img(name) {
 
 /* --Instances-- */
 
-new Img('bag');
-new Img('banana');
-new Img('bathroom');
-new Img('boots');
-new Img('breakfast');
-new Img('bubblegum');
-new Img('chair');
-new Img('cthulhu');
-new Img('dog-duck');
-new Img('dragon');
-new Img('pen');
-new Img('pet-sweep');
-new Img('scissors');
-new Img('shark');
-new Img('sweep');
-new Img('tauntaun');
-new Img('unicorn');
-new Img('usb');
-new Img('water-can');
-new Img('wine-glass');
+new Img('bag', 'jpg');
+new Img('banana', 'jpg');
+new Img('bathroom', 'jpg');
+new Img('boots', 'jpg');
+new Img('breakfast', 'jpg');
+new Img('bubblegum', 'jpg');
+new Img('chair', 'jpg');
+new Img('cthulhu', 'jpg');
+new Img('dog-duck', 'jpg');
+new Img('dragon', 'jpg');
+new Img('pen', 'jpg');
+new Img('pet-sweep', 'jpg');
+new Img('scissors', 'jpg');
+new Img('shark', 'jpg');
+new Img('sweep', 'png');
+new Img('tauntaun', 'jpg');
+new Img('unicorn','jpg');
+new Img('usb', 'gif');
+new Img('water-can', 'jpg');
+new Img('wine-glass', 'jpg');
 
 /* Helper Functions */
 
