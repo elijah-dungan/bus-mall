@@ -25,10 +25,11 @@ var labelThreeEl = document.getElementById('label-three');
 
 /* --Constructor Functions-- */
 
-function Img(name, extension) {
+function Img(name, extension, price) {
   this.name = name.toLowerCase();
   this.value = name.toLowerCase();
   this.displayName = name;
+  this.price = price;
   this.filepath = `img/${name}.${extension}`;
   this.votes = 0;
   this.views = 0;
@@ -37,26 +38,26 @@ function Img(name, extension) {
 
 /* --Instances-- */
 
-new Img('Bag', 'jpg');
-new Img('Banana', 'jpg');
-new Img('Bathroom', 'jpg');
-new Img('Boots', 'jpg');
-new Img('Breakfast', 'jpg');
-new Img('Bubblegum', 'jpg');
-new Img('Chair', 'jpg');
-new Img('Cthulhu', 'jpg');
-new Img('Dog-Duck', 'jpg');
-new Img('Dragon', 'jpg');
-new Img('Pen', 'jpg');
-new Img('Pet-Sweep', 'jpg');
-new Img('Scissors', 'jpg');
-new Img('Shark', 'jpg');
-new Img('Sweep', 'png');
-new Img('Tauntaun', 'jpg');
-new Img('Unicorn', 'jpg');
-new Img('USB', 'gif');
-new Img('Water-Can', 'jpg');
-new Img('Wine-Glass', 'jpg');
+new Img('Bag', 'jpg', '$19.99');
+new Img('Banana', 'jpg', '$1.99');
+new Img('Bathroom', 'jpg', '$11.99');
+new Img('Boots', 'jpg', '$39.99');
+new Img('Breakfast', 'jpg', '$119.99');
+new Img('Bubblegum', 'jpg', '$2.99');
+new Img('Chair', 'jpg', '$13.99');
+new Img('Cthulhu', 'jpg', '$9.99');
+new Img('Dog-Duck', 'jpg', '$4.99');
+new Img('Dragon', 'jpg', '$2.99');
+new Img('Pen', 'jpg', '$4.99');
+new Img('Pet-Sweep', 'jpg', '$11.99');
+new Img('Scissors', 'jpg', '$6.99');
+new Img('Shark', 'jpg', '$29.99');
+new Img('Sweep', 'png', '$11.99');
+new Img('Tauntaun', 'jpg', '$14.99');
+new Img('Unicorn', 'jpg', '$2.99');
+new Img('USB', 'gif', '$14.99');
+new Img('Water-Can', 'jpg', '$3.99');
+new Img('Wine-Glass', 'jpg', '$9.99');
 
 /* Helper Functions */
 
@@ -74,11 +75,13 @@ function assignValues(imgElName, radioElName, labelName) { // assignes random sr
   }
   recentRandNum.push(randNum); // pushes random number into recentRandNum array
   allImgs[randNum].views ++; // increments views by 1
+  var displayName = allImgs[randNum].displayName; // changes element's textContent to name
+  var price = allImgs[randNum].price;
   imgElName.src = allImgs[randNum].filepath; // assigns filepath value to element's src property
   imgElName.alt = allImgs[randNum].name; // assigns name value to element's alt property
   imgElName.title = allImgs[randNum].name; // assigns name value to element's title property
   radioElName.value = allImgs[randNum].name; // assigns name value to element's value property
-  labelName.innerText = allImgs[randNum].displayName; // changes element's textContent to name
+  labelName.innerText = `${displayName} ${price}`; // changes element's textContent to name
 }
 
 function render() { // renders images and radio buttons while assigning their appropriate property values
