@@ -4,8 +4,60 @@ html {
 * {
     text-decoration: none;
 }
+body {
+    margin: 0;
+}
+#sticky-header {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    background-color: rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+nav {
+    margin: 0;
+    padding: 11px 10px 10px 10px;
+}
+.flexbox-container-nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 999;
+}
+#logo-area {
+    margin: 0 0 -4px 0;
+}
+#logo-header {
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+#links-area {
+    margin: 0;
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul li {
+    display: inline-block;
+}
+nav div ul li a { 
+    padding: 0 50px 0 50px;
+    color: rgb(50, 50, 50);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.padding-transparent {
+    padding: 72px 0 0 0;
+}
 main {
-    margin: 0 auto;
+    margin: 25px auto;
     border-radius: 10px;
     width: 960px;
     box-shadow: 
@@ -32,7 +84,10 @@ h2 {
 #results {
     color: black;
 }
-h3 {
+.placeholder-1{
+    width: 50px;
+}
+.placeholder-2{
     width: 100px;
 }
 #image-container {
@@ -119,4 +174,14 @@ fieldset {
     margin: 5px 10px;
     padding: 5px 10px;
 }
-
+footer {
+    border-top: 1px solid rgb(150, 150, 150);
+    background-color: rgb(200, 200, 200);
+    width: 100%;
+    height: 63px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    padding: 20px 0 5px 0;
+    text-align: center;
+}
