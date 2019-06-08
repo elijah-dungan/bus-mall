@@ -62,7 +62,9 @@ new Img('Wine-Glass', 'jpg', '$9.99');
 /* Helper Functions */
 
 function random(min, max) { // generates random numbers within a min/max range
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  min = Math.ceil(min); // rounds min up to the nearest whole number
+  max = Math.floor(max); // rounds max down to the nearest whole number
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function assignValues(imgElName, radioElName, labelName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
@@ -115,7 +117,7 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
-function changeHandler(e) {
+function clickHandler(e) {
   if (e.target) {
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var j = 0; j < options.length; j ++) {
@@ -168,6 +170,9 @@ function submitHandler(e) {
       }
     }
     if(remainingVotes === 0) { // checks remaining votes
+      var submit = document.getElementById('submit');
+      submit.style.visibility = 'hidden'; // hides submit button
+      submit.style.transition = '0ms'; // sets transition time to 0
       imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
       renderVotes();
     }
@@ -179,7 +184,7 @@ function submitHandler(e) {
 
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', changeHandler);
+imgContainerEl.addEventListener('click', clickHandler);
 imgContainerEl.addEventListener('submit', submitHandler);
 
 /* --Function Calls-- */
