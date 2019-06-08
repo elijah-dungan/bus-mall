@@ -7,7 +7,7 @@ html {
 body {
     margin: 0;
     min-width: 1200px;
-    background-color: rgb(225, 225, 220)
+    background-color: rgb(220, 220, 220);
 }
 #sticky-header {
     position: fixed;
@@ -73,9 +73,9 @@ nav div ul li a:hover {
     width: 1200px;
     margin: 0 auto;
 }
-#overlay-container img {
+/* #overlay-container img {
     opacity: 0.90;
-}
+} */
 main {
     margin: 0 auto 0 auto;
     /* border-radius: 10px; */
@@ -187,7 +187,7 @@ fieldset {
     /* border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px; */
     height: 415px;
-    background-color: white;
+    background-color: rgb(240, 240, 240);
 }
 #vote-list {
     margin: 15px auto;
