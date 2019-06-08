@@ -73,9 +73,9 @@ nav div ul li a:hover {
     width: 1200px;
     margin: 0 auto;
 }
-/* #overlay-container img {
-    opacity: 0.95;
-} */
+#overlay-container img {
+    opacity: 0.90;
+}
 main {
     margin: 0 auto 0 auto;
     /* border-radius: 10px; */
