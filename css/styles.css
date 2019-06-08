@@ -72,22 +72,22 @@ nav div ul li a:hover {
     width: 1200px;
     margin: 0 auto;
 }
-#overlay-container img {
-    /* opacity: 0.95; */
-}
+/* #overlay-container img {
+    opacity: 0.95;
+} */
 main {
-    margin: 25px auto;
-    border-radius: 10px;
+    margin: 0px auto;
+    /* border-radius: 10px; */
     width: 960px;
     box-shadow: 
     0 2px 15px rgb(0, 0, 0, 0.40);
 }
-form {
+/* form {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-}
+} */
 #logo {
-    border-top-left-radius: 10px;
+    /* border-top-left-radius: 10px; */
     margin: -10px 0 0 -10px;
     position: relative;
     width: 100px;
@@ -184,8 +184,8 @@ fieldset {
     transition: 500ms;
 }
 .results-area {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /* border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; */
     height: 415px;
     background-color: white;
 }
