@@ -62,20 +62,17 @@ nav div ul li a:hover {
 }
 #hero-image-container {
     background-image: url('https://elijah-dungan.github.io/imagebucket/bus-mall-heroine-dark.jpg'); 
-    position: relative;
     height: 500px;
+    min-width: 1200px;
     /* background-attachment: fixed;  */
     background-size: cover;
     margin: 0; 
 }
 #overlay-container {
-    margin: 0;
-    width: 100%;
+    width: 1200px;
     margin: 0 auto;
-    text-align: center;
 }
 #overlay-container img {
-    width: 1200px;
     /* opacity: 0.95; */
 }
 main {
@@ -140,7 +137,8 @@ fieldset {
     margin: 0 0 -10px 0;
     width: 275px;
     height: 200px; 
-    border: 5px solid white;
+    padding: 5px;
+    background-color: white;
     object-fit: cover;
     transition: 500ms;
     box-shadow: 
