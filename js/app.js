@@ -10,6 +10,7 @@ var remainingVotes = 25;
 var imgContainerEl = document.getElementById('image-container');
 var ulEl = document.getElementById('vote-list');
 var h2El = document.getElementById('votes-left');
+var buttonEl = document.getElementById('submit');
 
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
@@ -117,7 +118,7 @@ function renderVotes() {
 
 /* --Event Handler-- */
 
-function clickHandler(e) {
+function handleClick(e) {
   if (e.target) {
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var j = 0; j < options.length; j ++) {
@@ -152,9 +153,9 @@ function clickHandler(e) {
   }
 }
 
-function submitHandler(e) {
+function handleSubmit(e) {
+  e.preventDefault();
   if(e.target) {
-    e.preventDefault();
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var i = 0; i < allImgs.length; i ++) { // loops through all images
       for(var j = [0]; j < options.length; j ++) { // loops through radio buttons
@@ -170,11 +171,9 @@ function submitHandler(e) {
       }
     }
     if(remainingVotes === 0) { // checks remaining votes
-      var submit = document.getElementById('submit');
-      submit.style.visibility = 'hidden'; // hides submit button
-      submit.style.transition = '0ms'; // sets transition time to 0
-      imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
-      renderVotes();
+      buttonEl.textContent = 'Click to View to Your Results!';
+      imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
+      imgContainerEl.addEventListener('submit', handleResultsSubmit);
     }
   }
   console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
@@ -182,10 +181,20 @@ function submitHandler(e) {
   render();
 }
 
+function handleResultsSubmit(e) {
+  e.preventDefault();
+  if(e.target) {
+    renderVotes();
+    var submit = document.getElementById('submit');
+    submit.style.visibility = 'hidden'; // hides submit button
+    submit.style.transition = '0ms'; // sets transition time to 0
+  }
+}
+
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', clickHandler);
-imgContainerEl.addEventListener('submit', submitHandler);
+imgContainerEl.addEventListener('click', handleClick);
+imgContainerEl.addEventListener('submit', handleSubmit);
 
 /* --Function Calls-- */
 
