@@ -185,20 +185,18 @@ fieldset {
     text-align: center;
 }
 #slashed-price {
-    margin: 0 10px;
+    margin: 10px;
     color: rgb(70, 70, 70);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
 }
 #sale-price {
-    margin: 0 10px;
+    margin: 10px;
     color: rgb(253, 35, 0);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
 }
 #text-description {
     width: auto;
@@ -206,6 +204,20 @@ fieldset {
     padding: 10px 0 10px 10px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
+}
+#ratings {
+    margin: 10px 0;
+    padding: 0 4px;
+    height: 15px;
+    width: auto;
+}
+#reviews {
+    margin: 10px 0;
+    padding: 0 4px;
+    color: rgb(253, 35, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
 }
 #cart {
     width: 140px;
