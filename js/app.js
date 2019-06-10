@@ -9,7 +9,6 @@ var recentRandNum = [];
 var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
-// var ulEl = document.getElementById('vote-list');
 var h2El = document.getElementById('votes-left');
 var buttonEl = document.getElementById('submit');
 
@@ -121,10 +120,15 @@ function renderVotes() {
   var names = [];
   var votes= [];
   var views = [];
+  var ratios = [];
   for(var i = 0; i < allImgs.length; i ++) {
     names.push(allImgs[i].name);
     votes.push(allImgs[i].votes);
     views.push(allImgs[i].views);
+  }
+  var maxView = Math.max.apply(null, views);
+  for(var j = 0; j < allImgs.length; j ++) {
+    ratios.push(votes[j]/views[j] * maxView);
   }
   console.log(names);
   console.log(votes);
@@ -137,22 +141,31 @@ function renderVotes() {
         label: 'Number of Views',
         data: views,
         backgroundColor: 'rgb(54, 162, 235)',
-        borderWidth: 1
       },
       {
         label: 'Number of Votes',
         data: votes,
         backgroundColor: 'rgb(255, 99, 132)',
-        borderWidth: 1
+      },
+      {
+        label: 'Nearest Percentage',
+        data: ratios,
+        backgroundColor: 'rgb(100, 100, 100)',
       }
     ]
     },
     options: {
+      tooltips: {
+        enabled: false
+      },
       responsive: true,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
           ticks: {
+            callback: function(value, index, values) {
+              return `${Math.round(value / maxView * 100)}% - ${value}`;
+            },
             beginAtZero: true
           }
         }]
@@ -165,16 +178,6 @@ function renderVotes() {
   myChart.canvas.style.marginRight = 'auto';
   myChart.canvas.parentNode.style.textAlign = 'center';
   myChart.canvas.parentNode.style.width = '100%';
-
-  // for(var i = 0; i < allImgs.length; i ++) {
-  //   var displayName = allImgs[i].displayName;
-  //   var votes = allImgs[i].votes;
-  //   // var views = allImgs[i].views;
-  //   // var percentage = votes / views * 100;
-  //   var newList = document.createElement('li');
-  //   newList.textContent = `${votes} votes for the ${displayName}`;
-  //   ulEl.appendChild(newList);
-  // }
 }
 
 /* --Event Handler-- */
