@@ -187,12 +187,12 @@ fieldset {
 .results-area {
     height: 430px;
     width: auto;
-    padding: 10px;
+    padding: 10px 15px 0 10px;
     background-color: rgb(240, 240, 240);
     text-align: center;
 }
 #myChart {
-    height: 350px;
+    height: 360px;
     width: auto;
     margin: 0 auto;
 
