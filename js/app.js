@@ -4,6 +4,7 @@
 
 var allImgs = [];
 var recentRandNum = [];
+var spamChecker = [];
 
 var remainingVotes = 25;
 
@@ -68,6 +69,10 @@ function random(min, max) { // generates random numbers within a min/max range
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function addSum(a, b) {
+  return a + b;
+}
+
 function assignValues(imgElName, radioElName, labelName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
   var randNum = random(0, allImgs.length - 1); // generates a random number between zero and the length of allImgs array
   while(recentRandNum.includes(randNum)) { // loop checks to see if random number is already in array
@@ -91,17 +96,7 @@ function render() { // renders images and radio buttons while assigning their ap
   assignValues(imgOneEl, radioOneEl, labelOneEl); // assigns property values to first image and radio button
   assignValues(imgTwoEl, radioTwoEl, labelTwoEl); // assigns property values to first image and radio button
   assignValues(imgThreeEl, radioThreeEl, labelThreeEl); // assigns property values to first image and radio button
-  console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
-}
-
-function pageStyleOnLoad() {
-  imgOneEl.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
-  imgOneEl.style.margin = '-10px 0 0 0';
-  imgOneEl.style.filter = 'brightness(105%)';
-  imgTwoEl.style.filter = 'brightness(95%)';
-  imgTwoEl.style.margin = '0 0 -10px 0';
-  imgThreeEl.style.margin = '0 0 -10px 0';
-  imgThreeEl.style.filter = 'brightness(95%)';
+  console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 81, see --IMPORTANT--
 }
 
 function selectedStyle(imgElName) {
@@ -114,6 +109,12 @@ function defaultStyle(imgElName) {
   imgElName.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
   imgElName.style.margin = '0 0 -10px 0';
   imgElName.style.filter = 'brightness(95%)';
+}
+
+function pageStyleOnLoad() {
+  selectedStyle(imgOneEl);
+  defaultStyle(imgTwoEl);
+  defaultStyle(imgThreeEl);
 }
 
 function renderVotes() {
@@ -131,8 +132,6 @@ function renderVotes() {
   for(var j = 0; j < allImgs.length; j ++) {
     ratios.push(votes[j]/views[j] * maxView);
   }
-  console.log(names);
-  console.log(votes);
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -207,15 +206,34 @@ function handleSubmit(e) {
     for(var i = 0; i < allImgs.length; i ++) { // loops through all images
       for(var j = [0]; j < options.length; j ++) { // loops through radio buttons
         if(options[j].checked) { // checks which radio button has been selected
-          if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image namge
+          if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image name
+            spamChecker.push(options[j].id);
+            if(spamChecker.length > 5) { // condition that checks how many numbers are in the array
+              spamChecker.shift(); // removes numbers from the beginning of the array when there are more than the specified number
+            }
             allImgs[i].votes ++; // adds vote to constructor function property
             remainingVotes --; // decreases votes from remaining votes array
             votesEl.textContent = `Votes Remaining: ${remainingVotes}`; // displays remaining votes in the DOM
-            console.log(options[j].value);
-            console.log(allImgs[i].name);
           }
         }
       }
+    }
+    var spam = [];
+    for(var o = 0; o < spamChecker.length; o ++) {
+      for(var t = 0; t < spamChecker.length; t ++) {
+        if(spamChecker[o] === spamChecker[t]) {
+          spam.push(1);
+        } else {
+          spam.push(0);
+        }
+      }
+    }
+    console.log(spamChecker);
+    console.log(spam);
+    console.log(spam.reduce(addSum));
+    if(spam.reduce(addSum)/spamChecker.length > 4) { // if user clicks on same radio 5 times, alert is given
+      alert('Please vote honestly!');
+      spamChecker = [];
     }
     if(remainingVotes === 5) {
       votesEl.style.animation = 'alert1 0.5s';
@@ -243,7 +261,7 @@ function handleSubmit(e) {
       buttonEl.textContent = 'Click to View to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
-      console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
+      // console.log(allImgs); 
     }
   }
   render();
@@ -268,4 +286,4 @@ imgContainerEl.addEventListener('submit', handleSubmit);
 
 render();
 pageStyleOnLoad();
-console.log(allImgs);
+// console.log(allImgs);
