@@ -14,6 +14,7 @@ var resultsEl = document.getElementById('results');
 var titleEl = document.getElementById('title');
 var slashedPriceEl = document.getElementById('slashed-price');
 var salePriceEl = document.getElementById('sale-price');
+var saleBubbleEl = document.getElementById('sale-bubble');
 var buttonEl = document.getElementById('submit');
 var descriptionEl = document.getElementById('description-container');
 var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
@@ -35,10 +36,10 @@ var labelThreeEl = document.getElementById('label-three');
 
 /* --Constructor Functions-- */
 
-function Img(name, extension, price, sale, description) {
+function Img(name, extension, price, sale, displayName, description) {
   this.name = name.toLowerCase();
   this.value = name.toLowerCase();
-  this.displayName = name;
+  this.displayName = displayName;
   this.price = price;
   this.sale = sale;
   this.description = description;
@@ -50,26 +51,26 @@ function Img(name, extension, price, sale, description) {
 
 /* --Instances-- */
 
-new Img('Bag', 'jpg', '39.99', 'false', 'Bag dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo elit at imperdiet dui accumsan sit amet nulla. Pretium fusce id velit ut tortor pretium viverra. Massa tincidunt dui ut ornare lectus sit amet. Leo vel fringilla est ullamcorper eget. Amet luctus venenatis lectus magna fringilla urna. Integer eget aliquet nibh praesent tristique magna. Volutpat lacus laoreet non curabitur. Pretium quam vulputate dignissim suspendisse.');
-new Img('Banana', 'jpg', '1.99', 'true', 'Banana consequat semper viverra nam libero. Aliquet nec ullamcorper sit amet. Tristique risus nec feugiat in fermentum. Tincidunt nunc pulvinar sapien et ligula ullamcorper. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Faucibus in ornare quam viverra orci sagittis eu volutpat odio.');
-new Img('Bathroom', 'jpg', '11.99', 'true', 'Bathroom laoreet sit amet cursus sit amet dictum sit. Id leo in vitae turpis. Cursus euismod quis viverra nibh cras pulvinar. Dis parturient montes nascetur ridiculus. Ultricies mi eget mauris pharetra et ultrices neque. Mauris augue neque gravida in fermentum et sollicitudin. Egestas sed tempus urna et pharetra pharetra massa. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam.');
-new Img('Boots', 'jpg', '49.99', 'false', 'Boots amet purus gravida quis blandit turpis cursus in. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Duis at tellus at urna condimentum mattis pellentesque id. Nullam ac tortor vitae purus faucibus. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit. In ornare quam viverra orci sagittis eu volutpat. A cras semper auctor neque vitae tempus quam. Non odio euismod lacinia at quis.');
-new Img('Breakfast', 'jpg', '119.99', 'false', 'Breakfast pharetra massa massa ultricies mi. Nunc sed blandit libero volutpat. Lacus viverra vitae congue eu consequat ac felis. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Mi bibendum neque egestas congue quisque egestas diam in. Dictum at tempor commodo ullamcorper a lacus. Etiam erat velit scelerisque in dictum non consectetur.');
-new Img('Bubblegum', 'jpg', '2.99', 'true', 'Bubblegum adipiscing elit ut aliquam purus. Enim praesent elementum facilisis leo vel fringilla. Volutpat sed cras ornare arcu dui vivamus arcu felis. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Ut enim blandit volutpat maecenas volutpat. Auctor neque vitae tempus quam. Aenean et tortor at risus viverra adipiscing at. Ornare quam viverra orci sagittis eu volutpat odio facilisis.');
-new Img('Chair', 'jpg', '13.99', 'true', 'Chair in massa tempor nec feugiat nisl pretium fusce id. Facilisis gravida neque convallis a. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Ullamcorper malesuada proin libero nunc. Feugiat pretium nibh ipsum consequat. Amet tellus cras adipiscing enim. Bibendum ut tristique et egestas. Nunc sed velit dignissim sodales. Bibendum at varius vel pharetra vel turpis nunc eget lorem.');
-new Img('Cthulhu', 'jpg', '9.99', 'true', 'Cthulhu eu nisl nunc mi ipsum. Non curabitur gravida arcu ac. Leo in vitae turpis massa sed elementum tempus egestas sed. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Lacus laoreet non curabitur gravida arcu ac. Sagittis purus sit amet volutpat consequat. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. In est ante in nibh mauris cursus mattis molestie. Morbi tristique senectus et netus et malesuada.');
-new Img('Dog-Duck', 'jpg', '4.99', 'true', 'Dog-Duck sit amet mauris commodo quis imperdiet massa tincidunt nunc. Enim ut sem viverra aliquet eget sit. Venenatis lectus magna fringilla urna. Convallis posuere morbi leo urna. Sapien pellentesque habitant morbi tristique senectus et netus et. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt.');
-new Img('Dragon', 'jpg', '2.99', 'true', 'Dragon fames ac turpis egestas maecenas pharetra convallis. Urna neque viverra justo nec ultrices. Sed odio morbi quis commodo odio aenean sed adipiscing. Etiam tempor orci eu lobortis elementum nibh tellus molestie. Porta non pulvinar neque laoreet suspendisse interdum. Nec ultrices dui sapien eget mi proin sed libero enim. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Eu feugiat pretium nibh ipsum.');
-new Img('Pen', 'jpg', '4.99', 'true', 'Pen velit egestas dui id ornare. Pulvinar etiam non quam lacus. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Habitant morbi tristique senectus et netus. Eleifend mi in nulla posuere sollicitudin aliquam. In mollis nunc sed id semper risus. Aliquam id diam maecenas ultricies mi eget mauris pharetra. Sapien faucibus et molestie ac feugiat. Neque sodales ut etiam sit amet. Sem integer vitae justo eget magna fermentum. Urna duis convallis convallis tellus id interdum.');
-new Img('Pet-Sweep', 'jpg', '11.99', 'true', 'Pet-Sweep egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Et malesuada fames ac turpis egestas integer eget. Urna condimentum mattis pellentesque id nibh tortor id aliquet. Lorem donec massa sapien faucibus et molestie ac feugiat. Posuere lorem ipsum dolor sit amet. Massa tempor nec feugiat nisl pretium. Tincidunt augue interdum velit euismod in pellentesque massa. Venenatis cras sed felis eget velit aliquet sagittis id.');
-new Img('Scissors', 'jpg', '6.99', 'true', 'Scissors purus ut faucibus pulvinar elementum integer enim neque. Id aliquet lectus proin nibh nisl. Pharetra magna ac placerat vestibulum lectus mauris ultrices. Dictumst vestibulum rhoncus est pellentesque elit. Tristique senectus et netus et. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Molestie nunc non blandit massa enim nec dui nunc. Proin sed libero enim sed faucibus turpis.');
-new Img('Shark', 'jpg', '29.99', 'false', 'Shark tempus iaculis urna id volutpat lacus. Id faucibus nisl tincidunt eget nullam non nisi. Semper feugiat nibh sed pulvinar. A diam sollicitudin tempor id eu. Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Sagittis orci a scelerisque purus semper eget. Sodales ut eu sem integer vitae justo eget magna fermentum.');
-new Img('Sweep', 'png', '11.99', 'true', 'Sweep odio morbi quis commodo. Quisque non tellus orci ac. Auctor urna nunc id cursus metus aliquam eleifend. Lobortis scelerisque fermentum dui faucibus in ornare quam. Rutrum quisque non tellus orci ac auctor augue. Tellus cras adipiscing enim eu turpis egestas. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada. Donec ultrices tincidunt arcu non sodales neque. Amet tellus cras adipiscing enim. Aenean vel elit scelerisque mauris. Aliquet eget sit amet tellus cras adipiscing enim eu. Scelerisque eu ultrices vitae auctor eu augue.');
-new Img('Tauntaun', 'jpg', '14.99', 'true', 'Tauntaun mauris vitae ultricies leo integer malesuada nunc. Nunc faucibus a pellentesque sit amet. Nec ullamcorper sit amet risus. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Ut eu sem integer vitae justo eget magna fermentum iaculis. Convallis posuere morbi leo urna molestie at. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi.');
-new Img('Unicorn', 'jpg', '2.99', 'true', 'Unicorn nam at lectus urna duis convallis convallis. Ornare lectus sit amet est placerat in egestas erat. Non blandit massa enim nec. Aenean et tortor at risus viverra adipiscing at in. Nibh sit amet commodo nulla facilisi nullam vehicula. Augue neque gravida in fermentum et sollicitudin ac orci. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Bibendum ut tristique et egestas quis. Sed risus ultricies tristique nulla aliquet enim. Pellentesque dignissim enim sit amet.');
-new Img('USB', 'gif', '14.99', 'true', 'USB integer feugiat scelerisque varius. Cursus vitae congue mauris rhoncus. Nec nam aliquam sem et tortor. Aenean vel elit scelerisque mauris pellentesque. Vestibulum sed arcu non odio euismod lacinia. Non sodales neque sodales ut. Viverra justo nec ultrices dui sapien eget mi proin. Id faucibus nisl tincidunt eget nullam non nisi est sit. Nibh praesent tristique magna sit amet purus gravida quis. Dolor sit amet consectetur adipiscing. Commodo viverra maecenas accumsan lacus vel. Morbi quis commodo odio aenean. Eget lorem dolor sed viverra ipsum nunc aliquet bibendum.');
-new Img('Water-Can', 'jpg', '3.99', 'true', 'Water-Can sed viverra tellus in hac habitasse. In cursus turpis massa tincidunt dui ut ornare lectus. Orci nulla pellentesque dignissim enim. Tincidunt lobortis feugiat vivamus at augue eget arcu. Porttitor leo a diam sollicitudin tempor id eu nisl nunc. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus.');
-new Img('Wine-Glass', 'jpg', '9.99', 'true', 'Wine-Glass non quam lacus suspendisse faucibus interdum posuere lorem. Feugiat nisl pretium fusce id. Ante metus dictum at tempor. Ut porttitor leo a diam sollicitudin. Viverra nam libero justo laoreet. Egestas tellus rutrum tellus pellentesque eu. Non tellus orci ac auctor augue mauris augue. Ac turpis egestas integer eget aliquet nibh praesent tristique magna. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. Et sollicitudin ac orci phasellus egestas tellus rutrum. Pulvinar neque laoreet suspendisse interdum consectetur libero.');
+new Img('Bag', 'jpg', '39.99', 'false', 'Star Wars R2-D2 Travel Bag', 'Bag dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo elit at imperdiet dui accumsan sit amet nulla. Pretium fusce id velit ut tortor pretium viverra. Massa tincidunt dui ut ornare lectus sit amet. Leo vel fringilla est ullamcorper eget. Amet luctus venenatis lectus magna fringilla urna. Integer eget aliquet nibh praesent tristique magna. Volutpat lacus laoreet non curabitur. Pretium quam vulputate dignissim suspendisse.');
+new Img('Banana', 'jpg', '1.99', 'true', 'Banana Slicer N\' Dicer', 'Banana consequat semper viverra nam libero. Aliquet nec ullamcorper sit amet. Tristique risus nec feugiat in fermentum. Tincidunt nunc pulvinar sapien et ligula ullamcorper. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl. Faucibus in ornare quam viverra orci sagittis eu volutpat odio.');
+new Img('Bathroom', 'jpg', '11.99', 'true', 'Bathroom Ipad Holder', 'Bathroom laoreet sit amet cursus sit amet dictum sit. Id leo in vitae turpis. Cursus euismod quis viverra nibh cras pulvinar. Dis parturient montes nascetur ridiculus. Ultricies mi eget mauris pharetra et ultrices neque. Mauris augue neque gravida in fermentum et sollicitudin. Egestas sed tempus urna et pharetra pharetra massa. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullam.');
+new Img('Boots', 'jpg', '49.99', 'false', 'Open-Toe Rainboots', 'Boots amet purus gravida quis blandit turpis cursus in. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Duis at tellus at urna condimentum mattis pellentesque id. Nullam ac tortor vitae purus faucibus. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. At ultrices mi tempus imperdiet nulla malesuada pellentesque elit. In ornare quam viverra orci sagittis eu volutpat. A cras semper auctor neque vitae tempus quam. Non odio euismod lacinia at quis.');
+new Img('Breakfast', 'jpg', '119.99', 'false', 'All-In-One Breakfast Cooker', 'Breakfast pharetra massa massa ultricies mi. Nunc sed blandit libero volutpat. Lacus viverra vitae congue eu consequat ac felis. Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Mi bibendum neque egestas congue quisque egestas diam in. Dictum at tempor commodo ullamcorper a lacus. Etiam erat velit scelerisque in dictum non consectetur.');
+new Img('Bubblegum', 'jpg', '2.99', 'true', 'Meatball Bubble Gum', 'Bubblegum adipiscing elit ut aliquam purus. Enim praesent elementum facilisis leo vel fringilla. Volutpat sed cras ornare arcu dui vivamus arcu felis. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Ut enim blandit volutpat maecenas volutpat. Auctor neque vitae tempus quam. Aenean et tortor at risus viverra adipiscing at. Ornare quam viverra orci sagittis eu volutpat odio facilisis.');
+new Img('Chair', 'jpg', '13.99', 'true', 'Air Chair', 'Chair in massa tempor nec feugiat nisl pretium fusce id. Facilisis gravida neque convallis a. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Ullamcorper malesuada proin libero nunc. Feugiat pretium nibh ipsum consequat. Amet tellus cras adipiscing enim. Bibendum ut tristique et egestas. Nunc sed velit dignissim sodales. Bibendum at varius vel pharetra vel turpis nunc eget lorem.');
+new Img('Cthulhu', 'jpg', '9.99', 'true', 'Cthulhu Action Figure', 'Cthulhu eu nisl nunc mi ipsum. Non curabitur gravida arcu ac. Leo in vitae turpis massa sed elementum tempus egestas sed. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Lacus laoreet non curabitur gravida arcu ac. Sagittis purus sit amet volutpat consequat. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. In est ante in nibh mauris cursus mattis molestie. Morbi tristique senectus et netus et malesuada.');
+new Img('Dog-Duck', 'jpg', '4.99', 'true', 'Dog Duck Muzzle', 'Dog-Duck sit amet mauris commodo quis imperdiet massa tincidunt nunc. Enim ut sem viverra aliquet eget sit. Venenatis lectus magna fringilla urna. Convallis posuere morbi leo urna. Sapien pellentesque habitant morbi tristique senectus et netus et. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt.');
+new Img('Dragon', 'jpg', '2.99', 'true', 'Dragon Meat', 'Dragon fames ac turpis egestas maecenas pharetra convallis. Urna neque viverra justo nec ultrices. Sed odio morbi quis commodo odio aenean sed adipiscing. Etiam tempor orci eu lobortis elementum nibh tellus molestie. Porta non pulvinar neque laoreet suspendisse interdum. Nec ultrices dui sapien eget mi proin sed libero enim. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Eu feugiat pretium nibh ipsum.');
+new Img('Pen', 'jpg', '4.99', 'true', 'Pen Utensils', 'Pen velit egestas dui id ornare. Pulvinar etiam non quam lacus. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Habitant morbi tristique senectus et netus. Eleifend mi in nulla posuere sollicitudin aliquam. In mollis nunc sed id semper risus. Aliquam id diam maecenas ultricies mi eget mauris pharetra. Sapien faucibus et molestie ac feugiat. Neque sodales ut etiam sit amet. Sem integer vitae justo eget magna fermentum. Urna duis convallis convallis tellus id interdum.');
+new Img('Pet-Sweep', 'jpg', '11.99', 'true', 'Pet Sweep', 'Pet-Sweep egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Et malesuada fames ac turpis egestas integer eget. Urna condimentum mattis pellentesque id nibh tortor id aliquet. Lorem donec massa sapien faucibus et molestie ac feugiat. Posuere lorem ipsum dolor sit amet. Massa tempor nec feugiat nisl pretium. Tincidunt augue interdum velit euismod in pellentesque massa. Venenatis cras sed felis eget velit aliquet sagittis id.');
+new Img('Scissors', 'jpg', '6.99', 'true', 'Pizza Scissors', 'Scissors purus ut faucibus pulvinar elementum integer enim neque. Id aliquet lectus proin nibh nisl. Pharetra magna ac placerat vestibulum lectus mauris ultrices. Dictumst vestibulum rhoncus est pellentesque elit. Tristique senectus et netus et. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque. Molestie nunc non blandit massa enim nec dui nunc. Proin sed libero enim sed faucibus turpis.');
+new Img('Shark', 'jpg', '29.99', 'false', 'Shark Sleeping Bag', 'Shark tempus iaculis urna id volutpat lacus. Id faucibus nisl tincidunt eget nullam non nisi. Semper feugiat nibh sed pulvinar. A diam sollicitudin tempor id eu. Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Egestas maecenas pharetra convallis posuere morbi leo urna molestie at. Sagittis orci a scelerisque purus semper eget. Sodales ut eu sem integer vitae justo eget magna fermentum.');
+new Img('Sweep', 'png', '11.99', 'true', 'Baby-Sweep', 'Sweep odio morbi quis commodo. Quisque non tellus orci ac. Auctor urna nunc id cursus metus aliquam eleifend. Lobortis scelerisque fermentum dui faucibus in ornare quam. Rutrum quisque non tellus orci ac auctor augue. Tellus cras adipiscing enim eu turpis egestas. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada. Donec ultrices tincidunt arcu non sodales neque. Amet tellus cras adipiscing enim. Aenean vel elit scelerisque mauris. Aliquet eget sit amet tellus cras adipiscing enim eu. Scelerisque eu ultrices vitae auctor eu augue.');
+new Img('Tauntaun', 'jpg', '14.99', 'true', 'Ram Tauntaun', 'Tauntaun mauris vitae ultricies leo integer malesuada nunc. Nunc faucibus a pellentesque sit amet. Nec ullamcorper sit amet risus. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Ut eu sem integer vitae justo eget magna fermentum iaculis. Convallis posuere morbi leo urna molestie at. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi.');
+new Img('Unicorn', 'jpg', '2.99', 'true', 'Unicorn Meat', 'Unicorn nam at lectus urna duis convallis convallis. Ornare lectus sit amet est placerat in egestas erat. Non blandit massa enim nec. Aenean et tortor at risus viverra adipiscing at in. Nibh sit amet commodo nulla facilisi nullam vehicula. Augue neque gravida in fermentum et sollicitudin ac orci. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Bibendum ut tristique et egestas quis. Sed risus ultricies tristique nulla aliquet enim. Pellentesque dignissim enim sit amet.');
+new Img('USB', 'gif', '14.99', 'true', 'Cthulhu USB Drive', 'USB integer feugiat scelerisque varius. Cursus vitae congue mauris rhoncus. Nec nam aliquam sem et tortor. Aenean vel elit scelerisque mauris pellentesque. Vestibulum sed arcu non odio euismod lacinia. Non sodales neque sodales ut. Viverra justo nec ultrices dui sapien eget mi proin. Id faucibus nisl tincidunt eget nullam non nisi est sit. Nibh praesent tristique magna sit amet purus gravida quis. Dolor sit amet consectetur adipiscing. Commodo viverra maecenas accumsan lacus vel. Morbi quis commodo odio aenean. Eget lorem dolor sed viverra ipsum nunc aliquet bibendum.');
+new Img('Water-Can', 'jpg', '3.99', 'true', 'Self-Watering Water Can', 'Water-Can sed viverra tellus in hac habitasse. In cursus turpis massa tincidunt dui ut ornare lectus. Orci nulla pellentesque dignissim enim. Tincidunt lobortis feugiat vivamus at augue eget arcu. Porttitor leo a diam sollicitudin tempor id eu nisl nunc. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus.');
+new Img('Wine-Glass', 'jpg', '9.99', 'true', 'Clumsy Wine Glass', 'Wine-Glass non quam lacus suspendisse faucibus interdum posuere lorem. Feugiat nisl pretium fusce id. Ante metus dictum at tempor. Ut porttitor leo a diam sollicitudin. Viverra nam libero justo laoreet. Egestas tellus rutrum tellus pellentesque eu. Non tellus orci ac auctor augue mauris augue. Ac turpis egestas integer eget aliquet nibh praesent tristique magna. At tempor commodo ullamcorper a lacus vestibulum sed arcu non. Et sollicitudin ac orci phasellus egestas tellus rutrum. Pulvinar neque laoreet suspendisse interdum consectetur libero.');
 
 /* Helper Functions */
 
@@ -142,18 +143,18 @@ function renderVotes() {
   var names = [];
   var votes= [];
   var views = [];
-  var ratios = [];
+  // var ratios = [];
   descriptionEl.innerHTML = '<canvas id="myChart"></canvas>';
-  resultsEl.textContent = 'Sorry you didn\'t win, but here are your voting results:';
+  resultsEl.textContent = 'Sorry you didn\'t win, but here are the results of your votes:';
   for(var i = 0; i < allImgs.length; i ++) {
     names.push(allImgs[i].name);
     votes.push(allImgs[i].votes);
     views.push(allImgs[i].views);
   }
-  var maxView = Math.max.apply(null, views);
-  for(var j = 0; j < allImgs.length; j ++) {
-    ratios.push(votes[j]/views[j] * maxView);
-  }
+  // var maxView = Math.max.apply(null, views);
+  // for(var j = 0; j < allImgs.length; j ++) {
+  //   ratios.push(votes[j]/views[j] * maxView);
+  // }
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -168,12 +169,13 @@ function renderVotes() {
         label: 'Number of Votes',
         data: votes,
         backgroundColor: 'rgb(255, 99, 132)',
-      },
-      {
-        label: 'Nearest Percentage',
-        data: ratios,
-        backgroundColor: 'rgb(100, 100, 100)',
       }
+      // ,
+      // {
+      //   label: 'Nearest Percentage',
+      //   data: ratios,
+      //   backgroundColor: 'rgb(100, 100, 100)',
+      // }
       ]
     },
     options: {
@@ -185,9 +187,9 @@ function renderVotes() {
       scales: {
         yAxes: [{
           ticks: {
-            callback: function(value, index, values) {
-              return `${Math.round(value / maxView * 100)}% - ${value}`;
-            },
+            // callback: function(value, index, values) {
+            //   return `${Math.round(value / maxView * 100)}% - ${value}`;
+            // },
             beginAtZero: true
           }
         }]
@@ -211,10 +213,12 @@ function renderDescription() {
             slashedPriceEl.textContent = '$' + allImgs[i].price;
             salePriceEl.style.display = 'inline';
             salePriceEl.textContent = '$' + Math.floor(allImgs[i].price * 0.75 * 100) / 100; // 75% off
+            saleBubbleEl.style.visibility = 'visible';
           } else {
             slashedPriceEl.style.textDecoration = 'none';
             slashedPriceEl.textContent = '$' + allImgs[i].price;
             salePriceEl.style.display = 'none';
+            saleBubbleEl.style.visibility = 'hidden';
           }
         }
       }
@@ -280,7 +284,7 @@ function handleSubmit(e) {
     }
     if(remainingVotes > 1) {
       if(spam.reduce(addSum)/spamChecker.length > 6) { // if user clicks on same radio 6 times, alert is given
-        alert('Spam detected! Please hit okay to verify that you are not a robot.');
+        alert('Spam detected! Please click okay to verify that you are not a robot.');
         spamChecker = [];
       }
     }
@@ -289,7 +293,6 @@ function handleSubmit(e) {
       votesEl.style.color = 'rgb(50, 50, 50)';
       buttonEl.textContent = 'Click to View to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
-      // imgContainerEl.removeEventListener('click', handleClick); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
     }
   }

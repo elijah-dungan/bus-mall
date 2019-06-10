@@ -162,12 +162,20 @@ fieldset {
     transition: 500ms;
     box-shadow: 
     -2px 17px 5px rgba(0, 0, 0, 0.23);
-    
 }
-/* .about-container {
-    margin: 0;
-    padding: 0 0 10px 10px;
-} */
+#sale-bubble {
+    position: absolute;
+    z-index: 999;
+    margin: 25px 0 0 25px;
+    width: 50px;
+    padding: 8px 0;
+    border-radius: 25px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: none;
+    background-color: rgb(253, 35, 0);
+}
 #title {
     margin: 0;
     color: rgb(70, 70, 70);
