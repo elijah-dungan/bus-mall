@@ -208,7 +208,7 @@ function handleSubmit(e) {
         if(options[j].checked) { // checks which radio button has been selected
           if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image name
             spamChecker.push(options[j].id);
-            if(spamChecker.length > 5) { // condition that checks how many numbers are in the array
+            if(spamChecker.length > 7) { // condition that checks how many numbers are in the array
               spamChecker.shift(); // removes numbers from the beginning of the array when there are more than the specified number
             }
             allImgs[i].votes ++; // adds vote to constructor function property
@@ -228,32 +228,11 @@ function handleSubmit(e) {
         }
       }
     }
-    console.log(spamChecker);
-    console.log(spam);
-    console.log(spam.reduce(addSum));
-    if(spam.reduce(addSum)/spamChecker.length > 4) { // if user clicks on same radio 5 times, alert is given
-      alert('Please vote honestly!');
-      spamChecker = [];
-    }
-    if(remainingVotes === 5) {
-      votesEl.style.animation = 'alert1 0.5s';
-      votesEl.style.animationIterationCount = '1';
-    }
-    if(remainingVotes === 4) {
-      votesEl.style.animation = 'alert2 0.5s';
-      votesEl.style.animationIterationCount = '1';
-    }
-    if(remainingVotes === 3) {
-      votesEl.style.animation = 'alert1 0.5s';
-      votesEl.style.animationIterationCount = '1';
-    }
-    if(remainingVotes === 2) {
-      votesEl.style.animation = 'alert2 0.5s';
-      votesEl.style.animationIterationCount = '1';
-    }
-    if(remainingVotes === 1) {
-      votesEl.style.animation = 'alert1 0.5s';
-      votesEl.style.animationIterationCount = '1';
+    if(remainingVotes > 1) {
+      if(spam.reduce(addSum)/spamChecker.length > 6) { // if user clicks on same radio 6 times, alert is given
+        alert('Spam detected! Please hit okay to verify that you are not a robot.');
+        spamChecker = [];
+      }
     }
     if(remainingVotes === 0) { // checks remaining votes
       votesEl.style.transition = '500ms';
@@ -261,7 +240,6 @@ function handleSubmit(e) {
       buttonEl.textContent = 'Click to View to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
-      // console.log(allImgs); 
     }
   }
   render();
