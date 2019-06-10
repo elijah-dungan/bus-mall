@@ -198,7 +198,7 @@ function renderVotes() {
   var views = [];
   // var ratios = [];
   descriptionEl.innerHTML = '<canvas id="myChart"></canvas>';
-  resultsEl.textContent = 'Sorry you didn\'t win, but here are the results of your votes:';
+  resultsEl.textContent = 'Sorry you didn\'t win, but here are your results:';
   for(var i = 0; i < allImgs.length; i ++) {
     names.push(allImgs[i].name);
     votes.push(allImgs[i].votes);
