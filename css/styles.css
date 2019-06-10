@@ -186,9 +186,16 @@ fieldset {
 }
 .results-area {
     height: 430px;
-    width: auto;
+    width: 100%;
     padding: 10px;
     background-color: rgb(240, 240, 240);
+    text-align: center;
+}
+#myChart {
+    height: 350px;
+    width: auto;
+    margin: 0 auto;
+
 }
 #vote-list {
     margin: 15px auto;

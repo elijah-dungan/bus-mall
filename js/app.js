@@ -172,12 +172,6 @@ function renderVotes() {
       }
     }
   });
-  myChart.canvas.style.height = '350px';
-  myChart.canvas.style.width = 'auto';
-  myChart.canvas.style.marginLeft = 'auto';
-  myChart.canvas.style.marginRight = 'auto';
-  myChart.canvas.parentNode.style.textAlign = 'center';
-  myChart.canvas.parentNode.style.width = '100%';
 }
 
 /* --Event Handler-- */
