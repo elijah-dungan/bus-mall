@@ -16,10 +16,10 @@ body {
     right: 0;
     background-color: rgb(70, 70, 70);
     border-bottom: 1px solid black;
+    padding: 10px;
 }
 nav {
     margin: 0;
-    padding: 11px 10px 10px 10px;
 }
 .flexbox-container-nav {
     display: flex;
@@ -59,7 +59,7 @@ nav div ul li a:hover {
     color: rgb(253, 35, 0);
 } 
 .padding-transparent {
-    padding: 70px 0 0 0;
+    padding: 69px 0 0 0;
 }
 #hero-image-container {
     background-image: url('https://elijah-dungan.github.io/imagebucket/bus-mall-heroine-darker.jpg'); 
@@ -91,10 +91,21 @@ h2 {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+#votes-left {
+    margin: 0;
+    padding: 27px 0 0 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
 #results {
     margin: 0;
-    padding: 35px 0 0 0;
+    padding: 27px 0 0 0;
     color: rgb(70, 70, 70);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 .placeholder-1{
     width: 50px;
@@ -206,21 +217,25 @@ footer {
     margin: 0 auto;
     border-bottom: 1px solid rgb(100, 100, 100);
     background-color: rgb(70, 70, 70);
-    padding: 5px 0 15px 0;
+    padding: 25px 0 15px 0;
 }
 .footer-h {
     width: 92px;
     padding: 0 0 10px 0;
     border-bottom: 1.5px solid rgb(253, 35, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 #social-media img {
     margin: 0;
-    padding: 5px 20px 5px 0;
+    padding: 23px 20px 5px 0;
     width: auto;
     height: 25px;
 }
 #copyright {
-    padding: 10px;
+    padding: 25px 0 25px 0;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
     background-color: rgb(70, 70, 70);
     text-align: center;
