@@ -5,7 +5,6 @@
 var allImgs = [];
 var recentRandNum = [];
 var spamChecker = [];
-
 var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
@@ -20,18 +19,14 @@ var reviewsEl = document.getElementById('reviews');
 var buttonEl = document.getElementById('submit');
 var descriptionEl = document.getElementById('description-container');
 var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
-
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
 var imgThreeEl = document.getElementById('image-three');
-
 var imgLarge = document.getElementById('image-large');
 var txtDescription = document.getElementById('text-description');
-
 var radioOneEl = document.getElementById('radio-vote-one');
 var radioTwoEl = document.getElementById('radio-vote-two');
 var radioThreeEl = document.getElementById('radio-vote-three');
-
 var labelOneEl = document.getElementById('label-one');
 var labelTwoEl = document.getElementById('label-two');
 var labelThreeEl = document.getElementById('label-three');
@@ -112,7 +107,7 @@ new Img('Breakfast', 'jpg', '119.99', ratings.fourAndHalf, '502', 'false', 'All-
 new Img('Bubblegum', 'jpg', '2.99', ratings.threeAndHalf, '48', 'true', 'Meatball Bubble Gum', 'Made with real beef! Adipiscing elit ut aliquam purus. Enim praesent elementum facilisis leo vel fringilla. Volutpat sed cras ornare arcu dui vivamus arcu felis. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Ut enim blandit volutpat maecenas volutpat. Auctor neque vitae tempus quam. Aenean et tortor at risus viverra adipiscing at. Ornare quam viverra orci sagittis eu volutpat odio facilisis.');
 new Img('Chair', 'jpg', '13.99', ratings.half, '10', 'true', 'Memory Foam Chair', 'We are not liable for injuries. In massa tempor nec feugiat nisl pretium fusce id. Facilisis gravida neque convallis a. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Ullamcorper malesuada proin libero nunc. Feugiat pretium nibh ipsum consequat. Amet tellus cras adipiscing enim. Bibendum ut tristique et egestas. Nunc sed velit dignissim sodales. Bibendum at varius vel pharetra vel turpis nunc eget lorem.');
 new Img('Cthulhu', 'jpg', '9.99', ratings.threeAndHalf, '93', 'true', 'Cthulhu Action Figure', 'Cthulhu, because we got bored of vampires and zombies. Eu nisl nunc mi ipsum. Non curabitur gravida arcu ac. Leo in vitae turpis massa sed elementum tempus egestas sed. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Lacus laoreet non curabitur gravida arcu ac. Sagittis purus sit amet volutpat consequat. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. In est ante in nibh mauris cursus mattis molestie. Morbi tristique senectus et netus et malesuada.');
-new Img('Dog-Duck', 'jpg', '4.99', ratings.three, '16', 'true', 'Dog Duck Muzzle', 'Good for the local park. Not good for duck-hunting. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. Enim ut sem viverra aliquet eget sit. Venenatis lectus magna fringilla urna. Convallis posuere morbi leo urna. Sapien pellentesque habitant morbi tristique senectus et netus et. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt.');
+new Img('Dog-Duck', 'jpg', '4.99', ratings.three, '16', 'true', 'Dog Duck Muzzle', 'Good for the local park. Not so good for duck-hunting. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. Enim ut sem viverra aliquet eget sit. Venenatis lectus magna fringilla urna. Convallis posuere morbi leo urna. Sapien pellentesque habitant morbi tristique senectus et netus et. Quis imperdiet massa tincidunt nunc pulvinar sapien et ligula. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt.');
 new Img('Dragon', 'jpg', '2.99', ratings.threeAndHalf, '247', 'true', 'Dragon Meat', 'How to deepfry your dragon: Fames ac turpis egestas maecenas pharetra convallis. Urna neque viverra justo nec ultrices. Sed odio morbi quis commodo odio aenean sed adipiscing. Etiam tempor orci eu lobortis elementum nibh tellus molestie. Porta non pulvinar neque laoreet suspendisse interdum. Nec ultrices dui sapien eget mi proin sed libero enim. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. Eu feugiat pretium nibh ipsum.');
 new Img('Pen', 'jpg', '4.99', ratings.twoAndHalf, '79', 'true', 'Pen Utensils', 'For that college student that can\'t even afford normal eating utensils. Velit egestas dui id ornare. Pulvinar etiam non quam lacus. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Habitant morbi tristique senectus et netus. Eleifend mi in nulla posuere sollicitudin aliquam. In mollis nunc sed id semper risus.');
 new Img('Pet-Sweep', 'jpg', '11.99', ratings.twoAndHalf, '8', 'true', 'Pet Sweep', 'Now your dog can clean up after itself! Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Et malesuada fames ac turpis egestas integer eget. Urna condimentum mattis pellentesque id nibh tortor id aliquet. Lorem donec massa sapien faucibus et molestie ac feugiat. Posuere lorem ipsum dolor sit amet. Massa tempor nec feugiat nisl pretium. Tincidunt augue interdum velit euismod in pellentesque massa. Venenatis cras sed felis eget velit aliquet sagittis id.');
@@ -259,10 +254,10 @@ function renderDescription() {
           imgLarge.src = allImgs[i].filepath; // assigns filepath value to element's src property
           imgLarge.alt = allImgs[i].name; // assigns name value to element's alt property
           imgLarge.title = allImgs[i].name; // assigns name value to element's title property
-          titleEl.textContent = allImgs[i].displayName;
-          txtDescription.textContent = allImgs[i].description;
           ratingsEl.src = allImgs[i].ratings.filepath;
           ratingsEl.alt = allImgs[i].ratings.numStars;
+          titleEl.textContent = allImgs[i].displayName;
+          txtDescription.textContent = allImgs[i].description;
           reviewsEl.textContent = `${allImgs[i].reviews} reviews`;
           if(allImgs[i].sale === 'true') {
             slashedPriceEl.style.textDecoration = 'line-through';
