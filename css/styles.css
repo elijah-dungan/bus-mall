@@ -115,17 +115,21 @@ h2 {
 }
 #image-container {
     background-image: radial-gradient(ellipse, rgb(119, 138, 149) 25%, rgb(79, 98, 109));
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 25px 10px;
 }
 fieldset {
-    margin: 0;
-    padding: 0;
     border: none;
 }
 .flexbox-container-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+.flexbox-container-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0 0 10px;
 }
 .flexbox-container-between {
     display: flex;
@@ -146,6 +150,78 @@ fieldset {
     box-shadow: 
     0 6px 4px rgb(0, 0, 0, 0.40);
 }
+.image-container-large {
+    padding: 0 0 0 8px; /* offset due to default myChart margins. use in conjunct with .results-area */
+}
+#image-large {
+    width: 520px;
+    height: 378.18px; 
+    padding: 7px;
+    background-color: white;
+    object-fit: cover;
+    transition: 500ms;
+    box-shadow: 
+    -2px 17px 5px rgba(0, 0, 0, 0.23);
+}
+#sale-bubble {
+    position: absolute;
+    z-index: 999;
+    margin: 25px 0 0 25px;
+    width: 50px;
+    padding: 8px 0;
+    border-radius: 25px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: none;
+    background-color: rgb(253, 35, 0);
+}
+#title {
+    margin: 0;
+    color: rgb(70, 70, 70);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+#slashed-price {
+    margin: 0 10px;
+    color: rgb(70, 70, 70);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+#sale-price {
+    margin: 0 10px;
+    color: rgb(253, 35, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+#text-description {
+    width: auto;
+    height: auto; 
+    padding: 10px 0 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+#cart {
+    width: 140px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgb(253, 35, 0);
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    transition: 500ms;
+}
+#cart:hover {
+    background-color: rgb(253, 140, 140);
+    transition: 250ms;
+}
 .radio-container {
     padding: 15px 0 10px 0;
     color: white;
@@ -165,7 +241,7 @@ fieldset {
     margin: 3.75px 0 0 5px;
 }
 .button-area {
-    margin: 0 auto 15px auto;
+    margin: 0 auto 0 auto;
     width: 100%;
     text-align: center;
 }
@@ -173,21 +249,21 @@ fieldset {
     width: 400px;
     height: 60px;
     border: none;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color: rgb(253, 35, 0);
     font-size: 1.5em;
+    font-weight: bold;
     color: white;
     transition: 500ms;
 }
 #submit:hover {
-    background-color: white;
-    color: rgb(70, 70, 70);
-    transition: 500ms;
+    background-color: rgb(253, 140, 140);
+    transition: 250ms;
 }
 .results-area {
     height: 448px;
     width: auto;
-    padding: 10px 15px 0 10px;
+    padding: 10px 32px 10px 24px; /* offset due to default myChart margins. use in conjunct with .image-container-large */
     background-color: rgb(240, 240, 240);
     text-align: center;
 }
@@ -195,7 +271,6 @@ fieldset {
     height: 382px;
     width: auto;
     margin: 0 auto;
-
 }
 #vote-list {
     margin: 15px auto;
