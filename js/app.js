@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 /* --Global Variables-- */
@@ -8,8 +9,9 @@ var recentRandNum = [];
 var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
-var ulEl = document.getElementById('vote-list');
+// var ulEl = document.getElementById('vote-list');
 var h2El = document.getElementById('votes-left');
+var buttonEl = document.getElementById('submit');
 
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
@@ -93,7 +95,7 @@ function render() { // renders images and radio buttons while assigning their ap
   console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 61, see --IMPORTANT--
 }
 
-function defaultStyle() {
+function pageStyleOnLoad() {
   imgOneEl.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
   imgOneEl.style.margin = '-10px 0 0 0';
   imgOneEl.style.filter = 'brightness(105%)';
@@ -103,58 +105,106 @@ function defaultStyle() {
   imgThreeEl.style.filter = 'brightness(95%)';
 }
 
+function selectedStyle(imgElName) {
+  imgElName.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
+  imgElName.style.filter = 'brightness(105%)';
+  imgElName.style.margin = '-10px 0 0 0';
+}
+
+function defaultStyle(imgElName) {
+  imgElName.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
+  imgElName.style.margin = '0 0 -10px 0';
+  imgElName.style.filter = 'brightness(95%)';
+}
+
 function renderVotes() {
+  var names = [];
+  var votes= [];
+  var views = [];
   for(var i = 0; i < allImgs.length; i ++) {
-    var displayName = allImgs[i].displayName;
-    var votes = allImgs[i].votes;
-    // var views = allImgs[i].views;
-    // var percentage = votes / views * 100;
-    var newList = document.createElement('li');
-    newList.textContent = `${votes} votes for the ${displayName}`;
-    ulEl.appendChild(newList);
+    names.push(allImgs[i].name);
+    votes.push(allImgs[i].votes);
+    views.push(allImgs[i].views);
   }
+  console.log(names);
+  console.log(votes);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: names,
+      datasets: [{
+        label: 'Number of Views',
+        data: views,
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderWidth: 1
+      },
+      {
+        label: 'Number of Votes',
+        data: votes,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderWidth: 1
+      }
+    ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+  myChart.canvas.style.height = '350px';
+  myChart.canvas.style.width = 'auto';
+  myChart.canvas.style.marginLeft = 'auto';
+  myChart.canvas.style.marginRight = 'auto';
+  myChart.canvas.parentNode.style.textAlign = 'center';
+  myChart.canvas.parentNode.style.width = '100%';
+
+  // for(var i = 0; i < allImgs.length; i ++) {
+  //   var displayName = allImgs[i].displayName;
+  //   var votes = allImgs[i].votes;
+  //   // var views = allImgs[i].views;
+  //   // var percentage = votes / views * 100;
+  //   var newList = document.createElement('li');
+  //   newList.textContent = `${votes} votes for the ${displayName}`;
+  //   ulEl.appendChild(newList);
+  // }
 }
 
 /* --Event Handler-- */
 
-function clickHandler(e) {
+function handleClick(e) {
   if (e.target) {
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var j = 0; j < options.length; j ++) {
       if(options[0].checked) {
-        imgOneEl.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
-        imgOneEl.style.filter = 'brightness(105%)';
-        imgOneEl.style.margin = '-10px 0 0 0';
+        selectedStyle(imgOneEl);
       } else {
-        imgOneEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
-        imgOneEl.style.margin = '0 0 -10px 0';
-        imgOneEl.style.filter = 'brightness(95%)';
+        defaultStyle(imgOneEl);
       }
       if(options[1].checked) {
-        imgTwoEl.style.boxShadow = '0 17px 5px rgb(0, 0, 0, 0.23)';
-        imgTwoEl.style.filter = 'brightness(105%)';
-        imgTwoEl.style.margin = '-10px 0 0 0';
+        selectedStyle(imgTwoEl);
       } else {
-        imgTwoEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
-        imgTwoEl.style.filter = 'brightness(95%)';
-        imgTwoEl.style.margin = '0 0 -10px 0';
+        defaultStyle(imgTwoEl);
       }
       if(options[2].checked) {
-        imgThreeEl.style.boxShadow = '2px 17px 5px rgb(0, 0, 0, 0.23)';
-        imgThreeEl.style.filter = 'brightness(105%)';
-        imgThreeEl.style.margin = '-10px 0 0 0';
+        selectedStyle(imgThreeEl);
       } else {
-        imgThreeEl.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
-        imgThreeEl.style.filter = 'brightness(95%)';
-        imgThreeEl.style.margin = '0 0 -10px 0';
+        defaultStyle(imgThreeEl);
       }
     }
   }
 }
 
-function submitHandler(e) {
+function handleSubmit(e) {
+  e.preventDefault();
   if(e.target) {
-    e.preventDefault();
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var i = 0; i < allImgs.length; i ++) { // loops through all images
       for(var j = [0]; j < options.length; j ++) { // loops through radio buttons
@@ -170,25 +220,33 @@ function submitHandler(e) {
       }
     }
     if(remainingVotes === 0) { // checks remaining votes
-      var submit = document.getElementById('submit');
-      submit.style.visibility = 'hidden'; // hides submit button
-      submit.style.transition = '0ms'; // sets transition time to 0
-      imgContainerEl.removeEventListener('submit', submitHandler); // removes event listener when votes = 0
-      renderVotes();
+      buttonEl.textContent = 'Click to View to Your Results!';
+      imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
+      imgContainerEl.addEventListener('submit', handleResultsSubmit);
+      console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
     }
   }
-  console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
   console.log(e.target);
   render();
 }
 
+function handleResultsSubmit(e) {
+  e.preventDefault();
+  if(e.target) {
+    renderVotes();
+    var submit = document.getElementById('submit');
+    submit.style.visibility = 'hidden'; // hides submit button
+    submit.style.transition = '0ms'; // sets transition time to 0
+  }
+}
+
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', clickHandler);
-imgContainerEl.addEventListener('submit', submitHandler);
+imgContainerEl.addEventListener('click', handleClick);
+imgContainerEl.addEventListener('submit', handleSubmit);
 
 /* --Function Calls-- */
 
 render();
-defaultStyle();
+pageStyleOnLoad();
 console.log(allImgs);

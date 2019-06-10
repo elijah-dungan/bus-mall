@@ -4,6 +4,7 @@
         <title></title>
         <link href="css/styles.css" type="text/css" rel="stylesheet"/>
         <!-- <link href="css/reset.css" type="text/css" rel="stylesheet"/> -->
+        <script src="js/chart.js" type="text/javascript"></script>
     </head>
     <body>
         <header id="sticky-header">
@@ -66,15 +67,16 @@
                         </div>
                     </div>
                     <div class="button-area">
-                        <input type="submit" id="submit" name="radioVote" value="Vote to Receive a Free Coupon!" />
+                        <button id="submit" name="radioVote">Vote to Receive a Free Coupon!</button>
                     </div>
                 </fieldset>
             </form>
             <div class='results-area'>
                 <h2 id="results">Results:</h2>
                 <div class="flexbox-container-row">
-                    <ul id="vote-list">
-                    </ul>
+                    <canvas id="myChart"></canvas>
+                    <!-- <ul id="vote-list">
+                    </ul> -->
                 </div>
             </div>
         </main>
