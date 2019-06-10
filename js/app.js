@@ -8,7 +8,8 @@ var recentRandNum = [];
 var remainingVotes = 25;
 
 var imgContainerEl = document.getElementById('image-container');
-var h2El = document.getElementById('votes-left');
+var votesEl = document.getElementById('votes-left');
+var resultsEl = document.getElementById('results');
 var buttonEl = document.getElementById('submit');
 
 var imgOneEl = document.getElementById('image-one');
@@ -120,6 +121,7 @@ function renderVotes() {
   var votes= [];
   var views = [];
   var ratios = [];
+  resultsEl.textContent = 'Sorry you didn\'t win, but here are your voting results:';
   for(var i = 0; i < allImgs.length; i ++) {
     names.push(allImgs[i].name);
     votes.push(allImgs[i].votes);
@@ -208,7 +210,7 @@ function handleSubmit(e) {
           if(options[j].value === allImgs[i].name) { // checks if selected radio value matches image namge
             allImgs[i].votes ++; // adds vote to constructor function property
             remainingVotes --; // decreases votes from remaining votes array
-            h2El.textContent = `Votes Remaining: ${remainingVotes}`; // displays remaining votes in the DOM
+            votesEl.textContent = `Votes Remaining: ${remainingVotes}`; // displays remaining votes in the DOM
             console.log(options[j].value);
             console.log(allImgs[i].name);
           }
@@ -216,28 +218,28 @@ function handleSubmit(e) {
       }
     }
     if(remainingVotes === 5) {
-      h2El.style.animation = 'alert1 0.5s';
-      h2El.style.animationIterationCount = '1';
+      votesEl.style.animation = 'alert1 0.5s';
+      votesEl.style.animationIterationCount = '1';
     }
     if(remainingVotes === 4) {
-      h2El.style.animation = 'alert2 0.5s';
-      h2El.style.animationIterationCount = '1';
+      votesEl.style.animation = 'alert2 0.5s';
+      votesEl.style.animationIterationCount = '1';
     }
     if(remainingVotes === 3) {
-      h2El.style.animation = 'alert1 0.5s';
-      h2El.style.animationIterationCount = '1';
+      votesEl.style.animation = 'alert1 0.5s';
+      votesEl.style.animationIterationCount = '1';
     }
     if(remainingVotes === 2) {
-      h2El.style.animation = 'alert2 0.5s';
-      h2El.style.animationIterationCount = '1';
+      votesEl.style.animation = 'alert2 0.5s';
+      votesEl.style.animationIterationCount = '1';
     }
     if(remainingVotes === 1) {
-      h2El.style.animation = 'alert1 0.5s';
-      h2El.style.animationIterationCount = '1';
+      votesEl.style.animation = 'alert1 0.5s';
+      votesEl.style.animationIterationCount = '1';
     }
     if(remainingVotes === 0) { // checks remaining votes
-      h2El.style.transition = '500ms';
-      h2El.style.color = 'rgb(50, 50, 50)';
+      votesEl.style.transition = '500ms';
+      votesEl.style.color = 'rgb(50, 50, 50)';
       buttonEl.textContent = 'Click to View to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
