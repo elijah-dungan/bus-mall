@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 'use strict';
 
 /* --Global Variables-- */
@@ -152,7 +151,7 @@ function renderVotes() {
         data: ratios,
         backgroundColor: 'rgb(100, 100, 100)',
       }
-    ]
+      ]
     },
     options: {
       tooltips: {
@@ -216,14 +215,35 @@ function handleSubmit(e) {
         }
       }
     }
+    if(remainingVotes === 5) {
+      h2El.style.animation = 'alert1 0.5s';
+      h2El.style.animationIterationCount = '1';
+    }
+    if(remainingVotes === 4) {
+      h2El.style.animation = 'alert2 0.5s';
+      h2El.style.animationIterationCount = '1';
+    }
+    if(remainingVotes === 3) {
+      h2El.style.animation = 'alert1 0.5s';
+      h2El.style.animationIterationCount = '1';
+    }
+    if(remainingVotes === 2) {
+      h2El.style.animation = 'alert2 0.5s';
+      h2El.style.animationIterationCount = '1';
+    }
+    if(remainingVotes === 1) {
+      h2El.style.animation = 'alert1 0.5s';
+      h2El.style.animationIterationCount = '1';
+    }
     if(remainingVotes === 0) { // checks remaining votes
+      h2El.style.transition = '500ms';
+      h2El.style.color = 'rgb(50, 50, 50)';
       buttonEl.textContent = 'Click to View to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
       console.log(allImgs); // displays the allImgs array in the console, allowing for extensive debugging
     }
   }
-  console.log(e.target);
   render();
 }
 
