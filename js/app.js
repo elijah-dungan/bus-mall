@@ -12,6 +12,7 @@ var imgContainerEl = document.getElementById('image-container');
 var votesEl = document.getElementById('votes-left');
 var resultsEl = document.getElementById('results');
 var titleEl = document.getElementById('title');
+var priceEl = document.getElementById('price');
 var buttonEl = document.getElementById('submit');
 var descriptionEl = document.getElementById('description-container');
 var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
@@ -96,7 +97,7 @@ function assignValues(imgElName, radioElName, labelName) { // assignes random sr
   imgElName.alt = allImgs[randNum].name; // assigns name value to element's alt property
   imgElName.title = allImgs[randNum].name; // assigns name value to element's title property
   radioElName.value = allImgs[randNum].name; // assigns name value to element's value property
-  labelName.innerText = `${displayName} ${price}`; // changes element's textContent to name
+  labelName.innerText = `${displayName}`; // changes element's textContent to name
 }
 
 function render() { // renders images and radio buttons while assigning their appropriate property values
@@ -106,20 +107,32 @@ function render() { // renders images and radio buttons while assigning their ap
   console.log(recentRandNum); // displays the array of numbers which helps in adjusting line 81, see --IMPORTANT--
 }
 
-function selectedStyle(imgElName) {
-  imgElName.style.boxShadow = '-2px 17px 5px rgb(0, 0, 0, 0.23)';
+function selectedStyleLeft(imgElName) {
+  imgElName.style.boxShadow = '-2px 17px 5px rgba(0, 0, 0, 0.23)';
+  imgElName.style.filter = 'brightness(105%)';
+  imgElName.style.margin = '-10px 0 0 0';
+}
+
+function selectedStyleCenter(imgElName) {
+  imgElName.style.boxShadow = '0 17px 5px rgba(0, 0, 0, 0.23)';
+  imgElName.style.filter = 'brightness(105%)';
+  imgElName.style.margin = '-10px 0 0 0';
+}
+
+function selectedStyleRight(imgElName) {
+  imgElName.style.boxShadow = '2px 17px 5px rgba(0, 0, 0, 0.23)';
   imgElName.style.filter = 'brightness(105%)';
   imgElName.style.margin = '-10px 0 0 0';
 }
 
 function defaultStyle(imgElName) {
-  imgElName.style.boxShadow = '0 6px 4px rgb(0, 0, 0, 0.40)';
+  imgElName.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.40)';
   imgElName.style.margin = '0 0 -10px 0';
   imgElName.style.filter = 'brightness(95%)';
 }
 
 function pageStyleOnLoad() {
-  selectedStyle(imgOneEl);
+  selectedStyleLeft(imgOneEl);
   defaultStyle(imgTwoEl);
   defaultStyle(imgThreeEl);
 }
@@ -192,6 +205,7 @@ function renderDescription() {
           imgLarge.title = allImgs[i].name; // assigns name value to element's title property
           titleEl.textContent = allImgs[i].displayName;
           txtDescription.textContent = allImgs[i].description;
+          priceEl.textContent = allImgs[i].price;
         }
       }
     }
@@ -205,17 +219,17 @@ function handleClick(e) {
     var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
     for(var j = 0; j < options.length; j ++) {
       if(options[0].checked) {
-        selectedStyle(imgOneEl);
+        selectedStyleLeft(imgOneEl);
       } else {
         defaultStyle(imgOneEl);
       }
       if(options[1].checked) {
-        selectedStyle(imgTwoEl);
+        selectedStyleCenter(imgTwoEl);
       } else {
         defaultStyle(imgTwoEl);
       }
       if(options[2].checked) {
-        selectedStyle(imgThreeEl);
+        selectedStyleRight(imgThreeEl);
       } else {
         defaultStyle(imgThreeEl);
       }
