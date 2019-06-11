@@ -35,47 +35,47 @@ var labelThreeEl = document.getElementById('label-three');
 
 var ratings = {
   none: {
-    filepath: 'img/stars/no-stars.png',
+    filepath: './img/stars/no-stars.png',
     numStars: 'Zero stars'
   },
   half: {
-    filepath: 'img/stars/stars-half.png',
+    filepath: './img/stars/stars-half.png',
     numStars: 'One half star'
   },
   one: {
-    filepath: 'img/stars/one-star.png',
+    filepath: './img/stars/one-star.png',
     numStars: 'One star'
   },
   oneAndHalf: {
-    filepath: 'img/stars/one-star-half.png',
+    filepath: './img/stars/one-star-half.png',
     numStars: 'One and one half star'
   },
   two: {
-    filepath: 'img/stars/two-stars.png',
+    filepath: './img/stars/two-stars.png',
     numStars: 'Two stars'
   },
   twoAndHalf: {
-    filepath: 'img/stars/two-stars-half.png',
+    filepath: './img/stars/two-stars-half.png',
     numStars: 'Two and one half stars'
   },
   three: {
-    filepath: 'img/stars/three-stars.png',
+    filepath: './img/stars/three-stars.png',
     numStars: 'Three stars'
   },
   threeAndHalf: {
-    filepath: 'img/stars/three-stars-half.png',
+    filepath: './img/stars/three-stars-half.png',
     numStars: 'Three and one half stars'
   },
   four: {
-    filepath: 'img/stars/four-stars.png',
+    filepath: './img/stars/four-stars.png',
     numStars: 'Four stars'
   },
   fourAndHalf: {
-    filepath: 'img/stars/four-stars-half.png',
+    filepath: './img/stars/four-stars-half.png',
     numStars: 'Four and one half stars'
   },
   five: {
-    filepath: 'img/stars/five-stars.png',
+    filepath: './img/stars/five-stars.png',
     numStars: 'Five stars'
   }
 };
@@ -91,7 +91,7 @@ function Img(name, extension, price, ratings, reviews, sale, displayName, descri
   this.reviews = reviews;
   this.sale = sale;
   this.description = description;
-  this.filepath = `img/${name}.${extension}`;
+  this.filepath = `./img/${name}.${extension}`;
   this.votes = 0;
   this.views = 0;
   allImgs.push(this);
