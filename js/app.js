@@ -5,9 +5,9 @@
 
 var allImgs = [];
 var recentRandNum = [];
-var remainingVotes = 25;
+var remainingVotes;
 
-var imgContainerEl = document.getElementById('image-container');
+var formEl = document.getElementById('form-vote');
 var votesEl = document.getElementById('votes-left');
 var resultsEl = document.getElementById('results');
 var titleEl = document.getElementById('title');
@@ -18,7 +18,7 @@ var ratingsEl = document.getElementById('ratings');
 var reviewsEl = document.getElementById('reviews');
 var buttonEl = document.getElementById('submit');
 var descriptionEl = document.getElementById('description-container');
-var options = imgContainerEl.elements.radioVote; // gets the radio buttons and stores them
+var options = formEl.elements.radioVote; // gets the radio buttons and stores them
 var imgOneEl = document.getElementById('image-one');
 var imgTwoEl = document.getElementById('image-two');
 var imgThreeEl = document.getElementById('image-three');
@@ -129,10 +129,6 @@ function random(min, max) { // generates random numbers within a min/max range
   min = Math.ceil(min); // rounds min up to the nearest whole number
   max = Math.floor(max); // rounds max down to the nearest whole number
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function addSum(a, b) {
-  return a + b;
 }
 
 function assignValues(imgElName, radioElName, labelName) { // assignes random src, alt, title, and value values to specified element properties in the DOM
@@ -314,8 +310,8 @@ function handleSubmit(e) {
       votesEl.style.transition = '500ms';
       votesEl.style.color = 'rgb(50, 50, 50)';
       buttonEl.textContent = 'Click to Submit to Your Results!';
-      imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
-      imgContainerEl.addEventListener('submit', handleResultsSubmit);
+      formEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
+      formEl.addEventListener('submit', handleResultsSubmit);
     }
   }
   render();
@@ -333,12 +329,10 @@ function handleResultsSubmit(e) {
 
 /* --Event Listeners-- */
 
-imgContainerEl.addEventListener('click', handleClick);
-imgContainerEl.addEventListener('submit', handleSubmit);
+formEl.addEventListener('click', handleClick);
+formEl.addEventListener('submit', handleSubmit);
 
-/* --Function Calls-- */
-
-console.log(localStorage);
+/* --Executables-- */
 
 if(localStorage.getObjects) {
   var unstringifiedObjects = localStorage.getItem('getObjects');
@@ -346,7 +340,7 @@ if(localStorage.getObjects) {
   remainingVotes = 0;
   votesEl.textContent = `Votes Remaining: ${remainingVotes}`;
   votesEl.style.color = 'rgb(50, 50, 50)';
-  imgContainerEl.removeEventListener('submit', handleResultsSubmit);
+  formEl.removeEventListener('submit', handleResultsSubmit);
   buttonEl.style.visibility = 'hidden'; // hides submit button
   buttonEl.style.transition = '0ms'; // sets transition time to 0
   for(var i = 0; i < strings.length; i++) {
@@ -356,6 +350,9 @@ if(localStorage.getObjects) {
   }
   renderVotes();
 } else {
+  remainingVotes = 25;
+  votesEl.textContent = `Votes Remaining: ${remainingVotes}`;
+  votesEl.style.color = 'rgb(255, 255, 255)';
   createInstances();
 }
 render();

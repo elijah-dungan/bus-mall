@@ -113,7 +113,7 @@ h2 {
 .placeholder-2{
     width: 100px;
 }
-#image-container {
+#form-vote {
     background-image: radial-gradient(ellipse, rgb(119, 138, 149) 25%, rgb(79, 98, 109));
     padding: 10px 10px 25px 10px;
 }
