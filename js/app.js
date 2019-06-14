@@ -279,21 +279,18 @@ function handleClick(e) {
     radioOneEl.checked = 'checked';
     selectedStyleLeft(imgOneEl);
   } else {
-    radioOneEl.checked = '';
     defaultStyle(imgOneEl);
   }
   if(e.target.id === 'image-two' || e.target.id === 'radio-vote-two') {
     radioTwoEl.checked = 'checked';
     selectedStyleCenter(imgTwoEl);
   } else {
-    radioTwoEl.checked = '';
     defaultStyle(imgTwoEl);
   }
   if(e.target.id === 'image-three' || e.target.id === 'radio-vote-three') {
     radioThreeEl.checked = 'checked';
     selectedStyleRight(imgThreeEl);
   } else {
-    radioThreeEl.checked = '';
     defaultStyle(imgThreeEl);
   }
 }
