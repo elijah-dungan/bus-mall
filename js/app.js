@@ -274,22 +274,27 @@ function renderDescription() {
 /* --Event Handler-- */
 
 function handleClick(e) {
-  if (e.target) {
-    if(options[0].checked) {
-      selectedStyleLeft(imgOneEl);
-    } else {
-      defaultStyle(imgOneEl);
-    }
-    if(options[1].checked) {
-      selectedStyleCenter(imgTwoEl);
-    } else {
-      defaultStyle(imgTwoEl);
-    }
-    if(options[2].checked) {
-      selectedStyleRight(imgThreeEl);
-    } else {
-      defaultStyle(imgThreeEl);
-    }
+  console.log(e.target);
+  if(e.target.id === 'image-one' || e.target.id === 'radio-vote-one') {
+    radioOneEl.checked = 'checked';
+    selectedStyleLeft(imgOneEl);
+  } else {
+    radioOneEl.checked = '';
+    defaultStyle(imgOneEl);
+  }
+  if(e.target.id === 'image-two' || e.target.id === 'radio-vote-two') {
+    radioTwoEl.checked = 'checked';
+    selectedStyleCenter(imgTwoEl);
+  } else {
+    radioTwoEl.checked = '';
+    defaultStyle(imgTwoEl);
+  }
+  if(e.target.id === 'image-three' || e.target.id === 'radio-vote-three') {
+    radioThreeEl.checked = 'checked';
+    selectedStyleRight(imgThreeEl);
+  } else {
+    radioThreeEl.checked = '';
+    defaultStyle(imgThreeEl);
   }
 }
 if(remainingVotes > 0) {
