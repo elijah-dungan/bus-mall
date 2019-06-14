@@ -285,9 +285,9 @@ function handleClick(e) {
     defaultStyle(imgOneEl);
     defaultStyle(imgTwoEl);
   }
-}
-if(remainingVotes > 0) {
-  renderDescription();
+  if(remainingVotes > 0) {
+    renderDescription();
+  }
 }
 
 function handleSubmit(e) {
@@ -356,4 +356,3 @@ if(localStorage.storedInstances) {
 renderForm();
 renderDescription();
 pageStyleOnLoad();
-
