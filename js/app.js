@@ -189,7 +189,6 @@ function renderVotes() {
   var names = [];
   var votes= [];
   var views = [];
-
   descriptionEl.innerHTML = '<canvas id="myChart"></canvas>';
   resultsEl.textContent = 'Sorry you didn\'t win, but here are your results:';
   for(var i = 0; i < allImgs.length; i++) {
@@ -228,10 +227,10 @@ function renderVotes() {
       }
     }
   });
-  if(localStorage.getObjects) { // do nothing
+  if(localStorage.storedInstances) { // block left intentionally empty
   } else {
-    var stringifiedObjects = JSON.stringify(allImgs);
-    localStorage.setItem('getObjects', stringifiedObjects);
+    var stringifiedInstances = JSON.stringify(allImgs);
+    localStorage.setItem('storedInstances', stringifiedInstances);
   }
 }
 
@@ -266,7 +265,7 @@ function renderDescription() {
   }
 }
 
-/* --Event Handler-- */
+/* --Event Handlers-- */
 
 function handleClick(e) {
   console.log(e.target);
@@ -333,9 +332,9 @@ formEl.addEventListener('submit', handleSubmit);
 
 /* --Executables-- */
 
-if(localStorage.getObjects) {
-  var unstringifiedObjects = localStorage.getItem('getObjects');
-  var strings = JSON.parse(unstringifiedObjects);
+if(localStorage.storedInstances) {
+  var unstringifiedInstances = localStorage.getItem('storedInstances');
+  var strings = JSON.parse(unstringifiedInstances);
   remainingVotes = 0;
   votesEl.textContent = `Votes Remaining: ${remainingVotes}`;
   votesEl.style.color = 'rgb(50, 50, 50)';
