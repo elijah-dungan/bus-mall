@@ -148,7 +148,7 @@ function assignValues(imgElName, radioElName, labelName) { // assignes random sr
   labelName.innerText = `${displayName}`; // changes element's textContent to name
 }
 
-function render() { // renders images and radio buttons while assigning their appropriate property values
+function renderForm() { // renders images and radio buttons while assigning their appropriate property values
   assignValues(imgOneEl, radioOneEl, labelOneEl); // assigns property values to first image and radio button
   assignValues(imgTwoEl, radioTwoEl, labelTwoEl); // assigns property values to first image and radio button
   assignValues(imgThreeEl, radioThreeEl, labelThreeEl); // assigns property values to first image and radio button
@@ -312,7 +312,7 @@ function handleSubmit(e) {
       formEl.addEventListener('submit', handleResultsSubmit);
     }
   }
-  render();
+  renderForm();
   renderDescription();
 }
 
@@ -353,7 +353,7 @@ if(localStorage.storedInstances) {
   votesEl.style.color = 'rgb(255, 255, 255)';
   createInstances();
 }
-render();
+renderForm();
 renderDescription();
 pageStyleOnLoad();
 
