@@ -313,7 +313,7 @@ function handleSubmit(e) {
     if(remainingVotes === 0) { // checks remaining votes
       votesEl.style.transition = '500ms';
       votesEl.style.color = 'rgb(50, 50, 50)';
-      buttonEl.textContent = 'Click to View to Your Results!';
+      buttonEl.textContent = 'Click to Submit to Your Results!';
       imgContainerEl.removeEventListener('submit', handleSubmit); // removes event listener when votes = 0
       imgContainerEl.addEventListener('submit', handleResultsSubmit);
     }
